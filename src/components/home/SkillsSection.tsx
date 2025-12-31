@@ -53,8 +53,8 @@ const StrategyCard = ({ title, description, icon, tags, logo }: any) => (
 
 const SkillsSection = () => {
   return (
-    <section className="p-20">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="py-20 px-8">
+      <div className="max-w-7xl mx-auto">
         <SectionHeader
           icon={Terminal}
           label="Expertise"
