@@ -182,7 +182,7 @@ const HeroSection = () => {
         </motion.h2>
 
         <h1 className="text-5xl md:text-8xl font-black mb-10 tracking-tighter text-white">
-          <span className="bg-gradient-to-r from-blue-400 via-cyan-300 to-indigo-500 bg-clip-text text-transparent">
+          <span className="bg-linear-to-r from-blue-400 via-cyan-300 to-indigo-500 bg-clip-text text-transparent">
             <Typewriter
               words={["Susan Pant", "Full Stack Developer"]}
               loop={0}
@@ -202,7 +202,7 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 10, filter: "blur(8px)" }}
               animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
               transition={{ delay: 1 + i * 0.02, duration: 0.4 }}
-              className="text-gray-300 text-lg md:text-2xl font-light mr-[8px] hover:text-white transition-colors cursor-default"
+              className="text-gray-300 text-lg md:text-2xl font-light mr-2 hover:text-white transition-colors cursor-default"
             >
               {word}
             </motion.span>

@@ -1,180 +1,157 @@
-// components/ExperienceSection.tsx
-import React from 'react';
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import { Briefcase, Calendar, Building, Award, CheckCircle, Code, Cpu, Cloud } from 'lucide-react';
+import { motion } from "framer-motion";
+import {
+  Briefcase,
+  Calendar,
+  ChevronRight,
+  ShieldCheck,
+  Cloud,
+} from "lucide-react";
 
-const ExperienceSection: React.FC = () => {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
-
+const ExperienceSection = () => {
   const experiences = [
     {
       company: "Audit Partnership",
-      position: "Senior Software Engineer",
       period: "May 2025 - Oct 2025",
-      icon: <Building className="w-6 h-6" />,
-      achievements: [
-        "Developed secure, scalable web applications using .NET",
-        "Designed and integrated RESTful APIs",
-        "Optimized data handling with Entity Framework Core and SQL",
-        "Contributed to new system architecture for improved scalability"
+      role: "Senior Software Engineer",
+      description:
+        "Developed and maintained secure, scalable web applications using .NET, focusing on high-performance features for internal auditors and international clients.",
+      highlights: [
+        "Designed and integrated RESTful APIs, optimizing complex data handling with Entity Framework Core and SQL.",
+        "Contributed to the core system architecture, focusing on improved scalability and long-term maintainability.",
+        "Enhanced overall system performance through strategic database indexing and optimized workflow-driven feature delivery.",
+        "Proactively identified and resolved critical bugs to ensure seamless auditing workflows and client data integrity.",
       ],
-      tech: [".NET", "Entity Framework", "SQL", "REST APIs"],
-      color: "from-blue-500 to-cyan-500"
+      skills: [".NET", "EF Core", "SQL", "System Architecture", "REST APIs"],
+      icon: <ShieldCheck className="text-blue-400" size={20} />,
     },
     {
       company: "Cedar Gate Technologies",
-      position: "Senior Software Engineer",
       period: "April 2018 - May 2025",
-      icon: <Briefcase className="w-6 h-6" />,
-      achievements: [
-        "Designed and maintained web applications using ASP.NET Core & Blazor",
-        "Created custom RESTful APIs and optimized database interactions",
-        "Architected scalable software solutions aligned with business needs",
-        "Implemented cloud solutions using AWS services (S3, SQS, Kinesis, EventBridge)",
-        "Led teams and mentored developers for project success"
+      role: "Senior Software Engineer",
+      description:
+        "Architected and delivered enterprise-grade healthcare and financial web solutions using a diverse tech stack including ASP.NET Core, Blazor, and Grails.",
+      highlights: [
+        "Designed and developed custom RESTful APIs to facilitate seamless data exchange across distributed systems.",
+        "Utilized SQL and EF Core for high-efficiency data modeling and deep performance optimization of database interactions.",
+        "Implemented robust cloud solutions using AWS services (S3, SQS, Kinesis, EventBridge) to ensure fault tolerance and global scalability.",
+        "Ensured zero-regression deployments through comprehensive unit testing using xUnit and NUnit frameworks.",
+        "Led version control strategies using Git, managing complex branching and conflict resolution for large-scale team collaboration.",
+        "Orchestrated project workflows in JIRA, leading sprint planning and cross-functional coordination to meet strict delivery milestones.",
+        "Collaborated directly with stakeholders to translate business requirements into actionable, high-performance technical solutions.",
+        "Provided technical leadership and mentorship to junior engineers, establishing best practices for code quality and software design.",
       ],
-      tech: ["ASP.NET Core", "Blazor", "AWS", "React", "Grails", "xUnit"],
-      color: "from-purple-500 to-pink-500"
-    }
+      skills: [
+        "ASP.NET Core",
+        "AWS",
+        "Blazor",
+        "Grails",
+        "JIRA",
+        "xUnit",
+        "Kinesis",
+      ],
+      icon: <Cloud className="text-indigo-400" size={20} />,
+    },
   ];
 
   return (
-    <section ref={ref} id="experience" className="py-20 px-4">
-      <div className="max-w-6xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            <span className="bg-linear-to-r from-orange-400 to-red-400 bg-clip-text text-transparent">
-              Professional Experience
+    <section className="min-h-screen w-full bg-transparent py-24 px-6 relative overflow-hidden">
+      <div className="absolute top-1/2 left-0 w-96 h-96 bg-blue-600/5 blur-[120px] rounded-full -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
+      <div className="max-w-5xl mx-auto relative">
+        <div className="mb-20">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="flex items-center gap-2 text-blue-500 font-mono tracking-[0.3em] text-xs uppercase mb-3"
+          >
+            <Briefcase size={14} /> Professional History
+          </motion.div>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-5xl md:text-7xl font-black text-white tracking-tighter"
+          >
+            THE{" "}
+            <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-400 to-indigo-500">
+              JOURNEY.
             </span>
-          </h2>
-          <div className="w-24 h-1 bg-linear-to-r from-orange-500 to-red-500 mx-auto rounded-full mb-8" />
-          <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-            7+ years of building enterprise-level software solutions
-          </p>
-        </motion.div>
-
-        <div className="relative">
-          {/* Timeline line */}
-          <div className="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 h-full w-1 bg-linear-to-b from-blue-500 via-purple-500 to-pink-500 opacity-20" />
-
-          <div className="space-y-12">
-            {experiences.map((exp, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
-                animate={inView ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 0.6, delay: index * 0.2 }}
-                className={`relative flex flex-col md:flex-row items-center ${
-                  index % 2 === 0 ? 'md:flex-row-reverse' : ''
-                }`}
-              >
-                {/* Timeline dot */}
-                <div className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 z-10">
-                  <div className={`w-8 h-8 rounded-full bg-linear-to-r ${exp.color} flex items-center justify-center`}>
-                    {exp.icon}
-                  </div>
-                </div>
-
-                {/* Experience card */}
-                <div className={`md:w-5/12 ${index % 2 === 0 ? 'md:pr-12' : 'md:pl-12'} ml-12 md:ml-0`}>
-                  <div className="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-700 hover:border-gray-600 transition-all group">
-                    <div className="flex justify-between items-start mb-4">
-                      <div>
-                        <h3 className="text-2xl font-bold text-white group-hover:text-blue-300 transition-colors">
-                          {exp.position}
-                        </h3>
-                        <div className="flex items-center gap-2 mt-2">
-                          <Building className="w-4 h-4 text-gray-400" />
-                          <span className="text-lg text-gray-300">{exp.company}</span>
-                        </div>
-                      </div>
-                      <div className="flex items-center gap-2 px-3 py-1 bg-gray-900/50 rounded-full">
-                        <Calendar className="w-4 h-4 text-gray-400" />
-                        <span className="text-sm text-gray-300">{exp.period}</span>
-                      </div>
-                    </div>
-
-                    <ul className="space-y-3 mb-6">
-                      {exp.achievements.map((achievement, i) => (
-                        <li key={i} className="flex items-start gap-3">
-                          <CheckCircle className="w-5 h-5 text-green-500 shrink-0 mt-0.5" />
-                          <span className="text-gray-300">{achievement}</span>
-                        </li>
-                      ))}
-                    </ul>
-
-                    <div className="flex flex-wrap gap-2">
-                      {exp.tech.map((tech, i) => (
-                        <span
-                          key={i}
-                          className="px-3 py-1 bg-gray-900/70 rounded-full text-sm text-gray-300 border border-gray-700 hover:border-blue-500/50 transition-colors"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+          </motion.h2>
         </div>
 
-        {/* Key Achievements */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.8 }}
-          className="mt-20"
-        >
-          <h3 className="text-2xl font-semibold text-center text-white mb-8">
-            Key Responsibilities & Impact
-          </h3>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              {
-                icon: <Code className="w-8 h-8" />,
-                title: "Full-Stack Development",
-                description: "End-to-end development of scalable web applications"
-              },
-              {
-                icon: <Cpu className="w-8 h-8" />,
-                title: "System Architecture",
-                description: "Designing maintainable and scalable software solutions"
-              },
-              {
-                icon: <Cloud className="w-8 h-8" />,
-                title: "Cloud Integration",
-                description: "Implementing AWS services for fault-tolerant systems"
-              },
-              {
-                icon: <Award className="w-8 h-8" />,
-                title: "Team Leadership",
-                description: "Mentoring developers and leading project teams"
-              }
-            ].map((item, index) => (
-              <div
-                key={index}
-                className="bg-gray-800/30 p-6 rounded-xl border border-gray-700 hover:border-blue-500/50 transition-all group"
-              >
-                <div className="text-blue-400 mb-4 group-hover:scale-110 transition-transform">
-                  {item.icon}
-                </div>
-                <h4 className="text-xl font-semibold text-white mb-2">{item.title}</h4>
-                <p className="text-gray-400">{item.description}</p>
+        <div className="relative border-l border-white/10 ml-4 md:ml-12 space-y-24">
+          {experiences.map((exp, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              className="relative pl-12 md:pl-20"
+            >
+              {/* Timeline Indicator */}
+              <div className="absolute -left-5.25 top-0 h-10 w-10 bg-black border border-white/20 rounded-xl flex items-center justify-center z-10 shadow-[0_0_15px_rgba(0,0,0,1)]">
+                {exp.icon}
               </div>
-            ))}
-          </div>
-        </motion.div>
+
+              <div className="group relative">
+                {/* Header Info */}
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+                  <div>
+                    <h3 className="text-3xl font-bold text-white group-hover:text-blue-400 transition-colors">
+                      {exp.company}
+                    </h3>
+                    <p className="text-blue-500 font-mono text-sm tracking-wider uppercase mt-1">
+                      {exp.role}
+                    </p>
+                  </div>
+                  <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 rounded-full text-gray-400 text-xs font-bold font-mono">
+                    <Calendar size={14} /> {exp.period}
+                  </div>
+                </div>
+
+                {/* Role Description */}
+                <p className="text-gray-400 text-lg leading-relaxed mb-10 max-w-4xl italic">
+                  "{exp.description}"
+                </p>
+
+                {/* Expanded Bullet Points */}
+                <div className="grid grid-cols-1 gap-4 mb-10">
+                  {exp.highlights.map((item, i) => (
+                    <motion.div
+                      key={i}
+                      whileHover={{ x: 5 }}
+                      className="flex items-start gap-4 p-5 bg-white/2 border border-white/5 rounded-2xl hover:bg-white/4 transition-all"
+                    >
+                      <ChevronRight
+                        size={18}
+                        className="text-blue-600 mt-1 shrink-0"
+                      />
+                      <span className="text-gray-300 text-[15px] leading-relaxed font-medium">
+                        {item}
+                      </span>
+                    </motion.div>
+                  ))}
+                </div>
+
+                {/* Tech Stack Badges */}
+                <div className="flex flex-wrap gap-2">
+                  {exp.skills.map((skill) => (
+                    <span
+                      key={skill}
+                      className="px-3 py-1 bg-blue-500/5 border border-blue-500/20 rounded-md text-[10px] font-bold text-blue-400 uppercase tracking-widest"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+
+                {/* Section Connector line shadow */}
+                <div className="absolute -bottom-12 left-0 w-full h-px bg-linear-to-r from-transparent via-white/5 to-transparent" />
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );
