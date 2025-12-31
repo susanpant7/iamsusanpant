@@ -87,3 +87,10 @@ deploy in vercel
 -------------------------------
 connect your github to vercel
 select your repo
+build
+
+connect to your domain:
+project settings > domains
+add domain
+Update your domain's nameservers to enable Vercel DNS. ==> copy and paste the domain
+
