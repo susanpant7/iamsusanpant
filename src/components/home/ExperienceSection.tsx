@@ -6,6 +6,7 @@ import {
   ShieldCheck,
   Cloud,
 } from "lucide-react";
+import SectionHeader from "../UI/SectionHeader";
 
 const ExperienceSection = () => {
   const experiences = [
@@ -54,30 +55,15 @@ const ExperienceSection = () => {
   ];
 
   return (
-    <section className="min-h-screen w-full bg-transparent py-24 px-6 relative overflow-hidden">
+    <section className="min-h-screen w-full bg-transparent p-20 relative overflow-hidden">
       <div className="absolute top-1/2 left-0 w-96 h-96 bg-blue-600/5 blur-[120px] rounded-full -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
       <div className="max-w-5xl mx-auto relative">
-        <div className="mb-20">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="flex items-center gap-2 text-blue-500 font-mono tracking-[0.3em] text-xs uppercase mb-3"
-          >
-            <Briefcase size={14} /> Professional History
-          </motion.div>
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-5xl md:text-7xl font-black text-white tracking-tighter"
-          >
-            THE{" "}
-            <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-400 to-indigo-500">
-              JOURNEY.
-            </span>
-          </motion.h2>
-        </div>
+        <SectionHeader
+          icon={Briefcase}
+          label="Professional History"
+          title="The"
+          highlightedWord="Journey."
+        />
 
         <div className="relative border-l border-white/10 ml-4 md:ml-12 space-y-24">
           {experiences.map((exp, index) => (

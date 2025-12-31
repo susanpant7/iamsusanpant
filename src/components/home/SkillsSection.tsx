@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import { Users, Workflow, Layers, MessageSquare } from "lucide-react";
+import { Users, Workflow, Layers, MessageSquare, Terminal } from "lucide-react";
+import SectionHeader from "../UI/SectionHeader";
 
 const LOGOS = {
   csharp:
@@ -87,29 +88,36 @@ const StrategyCard = ({ title, description, icon, tags, logo }: any) => (
 
 const SkillsSection = () => {
   return (
-    <section className="py-32 bg-[#020617]">
+    <section className="p-20">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="mb-20">
-          <h2 className="text-blue-400 font-mono tracking-widest text-sm mb-2 uppercase">
-            Expertise
-          </h2>
-          <h3 className="text-4xl font-bold text-white">Technical Stack</h3>
-        </div>
+        <SectionHeader
+          icon={Terminal}
+          label="Expertise"
+          title="Technical"
+          highlightedWord="Stack."
+        />
 
         {/* Languages & Frameworks */}
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 mb-20">
+          {/* 1. The .NET Ecosystem (Your Core Strength) */}
           <SkillBadge icon={LOGOS.csharp} name="C#" />
-          <SkillBadge icon={LOGOS.groovy} name="Groovy" />
-          <SkillBadge icon={LOGOS.javascript} name="JS" />
-          <SkillBadge icon={LOGOS.sql} name="SQL" />
-          <SkillBadge icon={LOGOS.java} name="Java" />
-          <SkillBadge icon={LOGOS.python} name="Python" />
           <SkillBadge icon={LOGOS.dotnet} name=".NET Core" />
           <SkillBadge icon={LOGOS.efcore} name="EF Core" />
           <SkillBadge icon={LOGOS.blazor} name="Blazor" />
+
+          {/* 2. Database & Data Layer (Sits between BE and FE) */}
+          <SkillBadge icon={LOGOS.sql} name="SQL" />
+
+          {/* 3. The JVM Ecosystem (Secondary Backend) */}
+          <SkillBadge icon={LOGOS.java} name="Java" />
+          <SkillBadge icon={LOGOS.groovy} name="Groovy" />
+          <SkillBadge icon={LOGOS.grails} name="Grails" />
+
+          {/* 4. Frontend & Scripting (Client Side) */}
+          <SkillBadge icon={LOGOS.javascript} name="JS" />
           <SkillBadge icon={LOGOS.react} name="React" />
           <SkillBadge icon={LOGOS.angular} name="AngularJS" />
-          <SkillBadge icon={LOGOS.grails} name="Grails" />
+          <SkillBadge icon={LOGOS.python} name="Python" />
         </div>
 
         {/* Development Environment */}
