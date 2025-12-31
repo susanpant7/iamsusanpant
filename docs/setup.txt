@@ -81,9 +81,9 @@ function RootComponent() {
   );
 }
 
-use theme (dark or light mode)
 
-in index.css
-    @import "tailwindcss";
-    @custom-variant dark (&:where(.dark, .dark *));
-
+-------------------------------
+deploy in vercel
+-------------------------------
+connect your github to vercel
+select your repo
