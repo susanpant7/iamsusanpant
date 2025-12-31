@@ -17,8 +17,7 @@ const Header = () => {
   }, []);
 
   return (
-    <nav className="fixed top-0 w-full transition-all duration-500 z-1000 px-6 py-4">
-      {/* FIXED: Corrected dangerouslySetInnerHTML property name */}
+    <nav className="fixed top-0 w-full transition-all duration-500 z-1000 px-4 py-2">
       <style
         dangerouslySetInnerHTML={{
           __html: `
