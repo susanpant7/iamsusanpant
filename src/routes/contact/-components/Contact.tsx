@@ -11,6 +11,7 @@ import {
   Globe,
   Facebook,
   Instagram,
+  Download,
 } from "lucide-react";
 
 const Contact = () => {
@@ -24,7 +25,7 @@ const Contact = () => {
   };
 
   return (
-    <section className="min-h-screen w-full pt-32 pb-20 px-6">
+    <section className="min-h-screen w-full pt-32 pb-20 px-6 ">
       <div className="max-w-5xl mx-auto">
         {/* Header Section */}
         <div className="text-center mb-20">
@@ -52,11 +53,34 @@ const Contact = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
-            className="text-gray-400 text-lg max-w-2xl mx-auto"
+            className="text-gray-400 text-lg max-w-2xl mx-auto mb-10"
           >
             Whether you have a project in mind or just want to chat about tech,
             feel free to reach out through any of these platforms.
           </motion.p>
+
+          {/* CV DOWNLOAD BUTTON */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            className="flex justify-center"
+          >
+            <a
+              href="/susan_cv.pdf"
+              download="Susan_Pant_CV.pdf"
+              className="group relative inline-flex items-center gap-3 px-8 py-4 bg-white text-black font-black uppercase text-xs tracking-[0.2em] rounded-2xl hover:text-white transition-all duration-300 overflow-hidden"
+            >
+              <div className="absolute inset-0 w-0 bg-blue-600 group-hover:w-full transition-all duration-500 ease-out z-0" />
+              <span className="relative z-10 flex items-center gap-3">
+                Download Curriculum Vitae
+                <Download
+                  size={18}
+                  className="group-hover:translate-y-0.5 transition-transform"
+                />
+              </span>
+            </a>
+          </motion.div>
         </div>
 
         {/* Contact Grid */}
@@ -94,7 +118,7 @@ const Contact = () => {
 
           {/* Social Links Row 1 */}
           <motion.a
-            href="https://linkedin.com"
+            href="https://www.linkedin.com/in/susan-pant-518293170/"
             target="_blank"
             rel="noreferrer"
             whileHover={{ y: -5 }}
@@ -114,7 +138,7 @@ const Contact = () => {
           </motion.a>
 
           <motion.a
-            href="https://github.com"
+            href="https://github.com/susanpant7"
             target="_blank"
             rel="noreferrer"
             whileHover={{ y: -5 }}
@@ -135,7 +159,7 @@ const Contact = () => {
 
           {/* Social Links Row 2 */}
           <motion.a
-            href="https://facebook.com"
+            href="https://www.facebook.com/susan.pant.58/"
             target="_blank"
             rel="noreferrer"
             whileHover={{ y: -5 }}
@@ -155,7 +179,7 @@ const Contact = () => {
           </motion.a>
 
           <motion.a
-            href="https://instagram.com"
+            href="https://www.instagram.com/susan.pant7/"
             target="_blank"
             rel="noreferrer"
             whileHover={{ y: -5 }}

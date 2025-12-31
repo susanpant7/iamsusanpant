@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import Header from "../components/header/Header";
-import HeroSection from "../components/home/HeroSection";
+import IntroSection from "../components/home/IntroSection";
 import SkillsSection from "../components/home/SkillsSection";
 import ExperienceSection from "../components/home/ExperienceSection";
 
@@ -15,7 +15,7 @@ function Home() {
 
       {/* Each section integrated separately */}
       <div id="home">
-        <HeroSection />
+        <IntroSection />
       </div>
 
       <div id="skills">

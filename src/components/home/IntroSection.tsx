@@ -64,23 +64,79 @@ const FloatingIcon = ({
    Floating Icons Config
 ---------------------------------------------- */
 const FLOATING_ICONS = [
-  { Icon: Code2, top: "22%", left: "50%", color: "text-blue-400", glow: "bg-blue-500", delay: 0 },
+  {
+    Icon: Code2,
+    top: "22%",
+    left: "50%",
+    color: "text-blue-400",
+    glow: "bg-blue-500",
+    delay: 0,
+  },
 
-  { Icon: Monitor, top: "35%", left: "12%", color: "text-cyan-400", glow: "bg-cyan-500", delay: 0.4 },
-  { Icon: Server, top: "55%", left: "10%", color: "text-emerald-400", glow: "bg-emerald-500", delay: 0.8 },
-  { Icon: Database, top: "75%", left: "14%", color: "text-indigo-400", glow: "bg-indigo-500", delay: 1.2 },
+  {
+    Icon: Monitor,
+    top: "35%",
+    left: "12%",
+    color: "text-cyan-400",
+    glow: "bg-cyan-500",
+    delay: 0.4,
+  },
+  {
+    Icon: Server,
+    top: "55%",
+    left: "10%",
+    color: "text-emerald-400",
+    glow: "bg-emerald-500",
+    delay: 0.8,
+  },
+  {
+    Icon: Database,
+    top: "75%",
+    left: "14%",
+    color: "text-indigo-400",
+    glow: "bg-indigo-500",
+    delay: 1.2,
+  },
 
-  { Icon: Webhook, top: "35%", left: "88%", color: "text-yellow-400", glow: "bg-yellow-500", delay: 0.6 },
-  { Icon: Globe, top: "55%", left: "90%", color: "text-sky-400", glow: "bg-sky-500", delay: 1.0 },
-  { Icon: Terminal, top: "75%", left: "86%", color: "text-rose-400", glow: "bg-rose-500", delay: 1.4 },
+  {
+    Icon: Webhook,
+    top: "35%",
+    left: "88%",
+    color: "text-yellow-400",
+    glow: "bg-yellow-500",
+    delay: 0.6,
+  },
+  {
+    Icon: Globe,
+    top: "55%",
+    left: "90%",
+    color: "text-sky-400",
+    glow: "bg-sky-500",
+    delay: 1.0,
+  },
+  {
+    Icon: Terminal,
+    top: "75%",
+    left: "86%",
+    color: "text-rose-400",
+    glow: "bg-rose-500",
+    delay: 1.4,
+  },
 
-  { Icon: Layout, top: "88%", left: "50%", color: "text-purple-400", glow: "bg-purple-500", delay: 0.9 },
+  {
+    Icon: Layout,
+    top: "88%",
+    left: "50%",
+    color: "text-purple-400",
+    glow: "bg-purple-500",
+    delay: 0.9,
+  },
 ];
 
 /* ---------------------------------------------
    Hero Section
 ---------------------------------------------- */
-const HeroSection = () => {
+const IntroSection = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   /* Mouse Parallax */
@@ -207,4 +263,4 @@ const HeroSection = () => {
   );
 };
 
-export default HeroSection;
+export default IntroSection;

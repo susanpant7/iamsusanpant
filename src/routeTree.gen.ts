@@ -9,22 +9,11 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as SkillsRouteImport } from './routes/skills'
-import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as CoursesIndexRouteImport } from './routes/courses/index'
 import { Route as ContactIndexRouteImport } from './routes/contact/index'
+import { Route as CoursesCourseIdRouteImport } from './routes/courses/$courseId'
 
-const SkillsRoute = SkillsRouteImport.update({
-  id: '/skills',
-  path: '/skills',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AboutRoute = AboutRouteImport.update({
-  id: '/about',
-  path: '/about',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -40,61 +29,48 @@ const ContactIndexRoute = ContactIndexRouteImport.update({
   path: '/contact/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CoursesCourseIdRoute = CoursesCourseIdRouteImport.update({
+  id: '/courses/$courseId',
+  path: '/courses/$courseId',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/about': typeof AboutRoute
-  '/skills': typeof SkillsRoute
+  '/courses/$courseId': typeof CoursesCourseIdRoute
   '/contact': typeof ContactIndexRoute
   '/courses': typeof CoursesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/about': typeof AboutRoute
-  '/skills': typeof SkillsRoute
+  '/courses/$courseId': typeof CoursesCourseIdRoute
   '/contact': typeof ContactIndexRoute
   '/courses': typeof CoursesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/about': typeof AboutRoute
-  '/skills': typeof SkillsRoute
+  '/courses/$courseId': typeof CoursesCourseIdRoute
   '/contact/': typeof ContactIndexRoute
   '/courses/': typeof CoursesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/skills' | '/contact' | '/courses'
+  fullPaths: '/' | '/courses/$courseId' | '/contact' | '/courses'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/skills' | '/contact' | '/courses'
-  id: '__root__' | '/' | '/about' | '/skills' | '/contact/' | '/courses/'
+  to: '/' | '/courses/$courseId' | '/contact' | '/courses'
+  id: '__root__' | '/' | '/courses/$courseId' | '/contact/' | '/courses/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AboutRoute: typeof AboutRoute
-  SkillsRoute: typeof SkillsRoute
+  CoursesCourseIdRoute: typeof CoursesCourseIdRoute
   ContactIndexRoute: typeof ContactIndexRoute
   CoursesIndexRoute: typeof CoursesIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/skills': {
-      id: '/skills'
-      path: '/skills'
-      fullPath: '/skills'
-      preLoaderRoute: typeof SkillsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/about': {
-      id: '/about'
-      path: '/about'
-      fullPath: '/about'
-      preLoaderRoute: typeof AboutRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/': {
       id: '/'
       path: '/'
@@ -116,13 +92,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/courses/$courseId': {
+      id: '/courses/$courseId'
+      path: '/courses/$courseId'
+      fullPath: '/courses/$courseId'
+      preLoaderRoute: typeof CoursesCourseIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AboutRoute: AboutRoute,
-  SkillsRoute: SkillsRoute,
+  CoursesCourseIdRoute: CoursesCourseIdRoute,
   ContactIndexRoute: ContactIndexRoute,
   CoursesIndexRoute: CoursesIndexRoute,
 }
