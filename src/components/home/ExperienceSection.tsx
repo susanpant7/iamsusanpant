@@ -55,9 +55,9 @@ const ExperienceSection = () => {
   ];
 
   return (
-    <section className="min-h-screen w-full py-20 px-4 bg-transparent relative overflow-hidden">
+    <section className="min-h-screen w-full py-20 px-8 bg-transparent relative overflow-hidden">
       <div className="absolute top-1/2 left-0 w-96 h-96 bg-blue-600/5 blur-[120px] rounded-full -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
-      <div className="max-w-5xl mx-auto relative">
+      <div className="">
         <SectionHeader
           icon={Briefcase}
           label="Professional History"
