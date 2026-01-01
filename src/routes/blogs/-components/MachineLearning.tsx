@@ -1,15 +1,8 @@
-import BeautifulTitle from "../../../components/UI/Title";
 import img from "./machinelearning.webp";
 
 const MachineLearning = () => {
   return (
     <div>
-      <BeautifulTitle
-        label="Sew Your Own Future"
-        title="Watch"
-        highlightedWord="Out"
-        subtitle="Be careful while learning machines. They can be dangerous...."
-      />
       <div className="relative w-full max-w-xl mx-auto overflow-hidden rounded-2xl border border-white/10 bg-white/5">
         <img
           src={img}

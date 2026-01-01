@@ -1,15 +1,8 @@
-import BeautifulTitle from "../../../components/UI/Title";
 import img from "./react.webp";
 
 const EasyReactApp = () => {
   return (
     <div>
-      <BeautifulTitle
-        label="Don't Over react. Just React"
-        title="Be an"
-        highlightedWord="Actor"
-        subtitle="Learn to react from Doctor Drake Remorey....Next - Smell the fart act... "
-      />
       <div className="relative w-full max-w-xl mx-auto overflow-hidden rounded-2xl border border-white/10 bg-white/5">
         <img
           src={img}

@@ -1,15 +1,8 @@
-import BeautifulTitle from "../../../components/UI/Title";
 import img from "./csharp.webp";
 
 const CSharp = () => {
   return (
     <div className="space-y-6">
-      <BeautifulTitle
-        label="Don't Learn To Code"
-        title="Be a"
-        highlightedWord="Guitarist"
-        subtitle="Its easier to learn C# of guitar than C# language..."
-      />
       <div className="relative w-full max-w-xl mx-auto overflow-hidden rounded-2xl border border-white/10 bg-white/5">
         <img
           src={img}

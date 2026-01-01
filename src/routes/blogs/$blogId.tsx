@@ -1,19 +1,20 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Section } from "../../components/UI/SectionHeader";
 import { ArrowLeft } from "lucide-react";
-import { COURSES } from "./-types/courses.type";
+import { BLOGS } from "./-types/blogs.type";
+import BeautifulTitle from "../../components/UI/Title";
 
-export const Route = createFileRoute("/courses/$courseId")({
+export const Route = createFileRoute("/blogs/$blogId")({
   component: RouteComponent,
 });
 
 function RouteComponent() {
-  const { courseId } = Route.useParams();
+  const { blogId } = Route.useParams();
 
   // Lookup the course in the data array
-  const course = COURSES.find((c) => c.id === courseId);
+  const blog = BLOGS.find((c) => c.id === blogId);
 
-  if (!course) {
+  if (!blog) {
     return (
       <Section className="flex items-center justify-center min-h-[60vh]">
         <div className="text-center">
@@ -32,50 +33,52 @@ function RouteComponent() {
     );
   }
 
-  const SpecificContent = course.component;
+  const SpecificContent = blog.component;
   return (
     <Section id="course-viewer">
-      {/* 1. Navigation Header */}
-      <div className="max-w-4xl mx-auto w-full mb-12">
+      {/* Back link */}
+      <div className="w-full mb-10">
         <Link
-          to="/courses"
-          className="inline-flex items-center gap-2 text-blue-500/60 hover:text-blue-400 transition-all group font-mono text-xs tracking-widest uppercase"
+          to="/blogs"
+          className="inline-flex items-center gap-2 text-blue-400 font-semibold hover:text-white transition-all group font-mono text-sm tracking-wide uppercase px-3 py-1 rounded-lg bg-blue-500/10 hover:bg-blue-500/20"
         >
           <ArrowLeft
-            size={14}
+            size={16}
             className="group-hover:-translate-x-1 transition-transform"
           />
           Back to Curriculum
         </Link>
       </div>
 
-      <div className="max-w-4xl mx-auto w-full">
-        {/* 3. Body Content Section */}
-        <div className="relative mt-4">
-          {/* Minimalist Side Accent - subtle and static */}
+      {/* Main Content */}
+      <div className="w-full">
+        <div className="relative">
+          {/* Side Accent */}
           <div className="absolute -left-6 top-0 bottom-0 w-px bg-linear-to-b from-blue-500/30 to-transparent hidden md:block" />
 
-          {/* The 'prose' class handles all the spacing for your 
-      course content automatically without any card styles.
-  */}
+          <BeautifulTitle
+            label={blog.label}
+            title={blog.title}
+            subtitle={blog.subtitle}
+          />
+
           <div
-            className="prose prose-invert max-w-none 
-                    prose-headings:text-white 
-                    prose-headings:font-black 
-                    prose-headings:tracking-tighter 
-                    prose-headings:uppercase 
-                    prose-p:text-gray-400 
-                    prose-p:leading-relaxed 
-                    prose-strong:text-blue-400"
+            className="prose prose-invert max-w-none
+                   prose-headings:text-white
+                   prose-headings:font-black
+                   prose-headings:tracking-tighter
+                   prose-headings:uppercase
+                   prose-p:text-gray-400
+                   prose-p:leading-relaxed
+                   prose-strong:text-blue-400"
           >
             <SpecificContent />
           </div>
         </div>
 
-        {/* 4. Simple Footer */}
-        <div className="mt-24 pt-12 border-t border-white/5 flex justify-center">
+        <div className="mt-24 border-t border-white/5 flex justify-center">
           <Link
-            to="/courses"
+            to="/blogs"
             className="text-gray-500 hover:text-white transition-colors font-mono text-[10px] uppercase tracking-[0.3em]"
           >
             End of Module — Return to Overview

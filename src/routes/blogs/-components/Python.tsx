@@ -1,15 +1,8 @@
-import BeautifulTitle from "../../../components/UI/Title";
 import img from "./python.webp";
 
 const Python = () => {
   return (
     <div>
-      <BeautifulTitle
-        label="Snake it till you make it"
-        title="They can"
-        highlightedWord="Bite"
-        subtitle="Learn to dance with python from baba ranchod rathore...."
-      />
       <div className="relative w-full max-w-xl mx-auto overflow-hidden rounded-2xl border border-white/10 bg-white/5">
         <img
           src={img}
