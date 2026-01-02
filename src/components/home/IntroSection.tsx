@@ -162,7 +162,7 @@ const IntroSection = () => {
   }, [mouseX, mouseY]);
 
   const bioLines = [
-    "Highly skilled Full-Stack Developer crafting scalable, high-performance applications.",
+    "An Experienced Full-Stack Developer crafting scalable, high-performance applications.",
     "Expert in solving complex problems using clean architecture and modern stacks.",
     "Experienced in leading teams, Agile delivery, and mentoring developers.",
   ];
