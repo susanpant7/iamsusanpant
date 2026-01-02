@@ -1,5 +1,5 @@
 import { BuildAndDeployReactApp } from "../-components/build-deploy-react/BuildAndDeployReactApp";
-import CSharp from "../-components/CSharp";
+import AwaitInCSharp from "../-components/AwaitInCSharp";
 import MachineLearning from "../-components/MachineLearning";
 import PersonalPortfolio from "../-components/my-portfolio/PersonalPortfolio";
 import Python from "../-components/Python";
@@ -26,12 +26,12 @@ export const BLOGS = [
   },
   {
     id: "3",
-    label: "Master Modern C# Development",
-    title: "Learn C#",
+    label: "Why your thread goes on a coffee break ☕",
+    title: "Async / Await in .NET",
     subtitle:
-      "Master the fundamentals of C# and .NET, from core syntax to building real-world applications with confidence.",
+      "In almost every .NET (C#) application, async and await are used sometimes knowingly, sometimes because copy–paste is a lifestyle.",
     logo: LOGOS.csharp,
-    component: CSharp,
+    component: AwaitInCSharp,
   },
 
   {
