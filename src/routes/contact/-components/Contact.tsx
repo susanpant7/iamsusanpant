@@ -69,7 +69,7 @@ const Contact = () => {
           >
             <a
               href="/susan_cv.pdf"
-              download="Susan_Pant_CV.pdf"
+              download="Susan_Pant_cv.pdf"
               className="group relative inline-flex items-center gap-3 px-8 py-4 bg-white text-black font-black uppercase text-xs tracking-[0.2em] rounded-2xl hover:text-white transition-all duration-300 overflow-hidden"
             >
               <div className="absolute inset-0 w-0 bg-blue-600 group-hover:w-full transition-all duration-500 ease-out z-0" />
