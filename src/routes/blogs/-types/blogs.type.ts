@@ -1,5 +1,5 @@
+import { BuildAndDeployReactApp } from "../-components/build-deploy-react/BuildAndDeployReactApp";
 import CSharp from "../-components/CSharp";
-import EasyReactApp from "../-components/EasyReactApp";
 import MachineLearning from "../-components/MachineLearning";
 import PersonalPortfolio from "../-components/my-portfolio/PersonalPortfolio";
 import Python from "../-components/Python";
@@ -9,7 +9,7 @@ export const BLOGS = [
   {
     id: "1",
     label: "Build a Portfolio That Stands Out",
-    title: "Create Your Own Portfolio",
+    title: "Create Your Own Website",
     subtitle:
       "Design and build a modern personal portfolio that showcases your skills, projects, and professional identity.",
     logo: LOGOS.profile,
@@ -17,6 +17,15 @@ export const BLOGS = [
   },
   {
     id: "2",
+    label: "Build Powerful User Interfaces",
+    title: "Build and Deploy React",
+    subtitle:
+      "Create a simple React application. Then deploy it using vercel for free hosting with continuous deployment.",
+    logo: LOGOS.react,
+    component: BuildAndDeployReactApp,
+  },
+  {
+    id: "3",
     label: "Master Modern C# Development",
     title: "Learn C#",
     subtitle:
@@ -24,15 +33,7 @@ export const BLOGS = [
     logo: LOGOS.csharp,
     component: CSharp,
   },
-  {
-    id: "3",
-    label: "Build Powerful User Interfaces",
-    title: "Learn React",
-    subtitle:
-      "Learn React step by step and create fast, interactive user interfaces using modern hooks and best practices.",
-    logo: LOGOS.react,
-    component: EasyReactApp,
-  },
+
   {
     id: "4",
     label: "Start Your Python Journey",

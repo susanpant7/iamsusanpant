@@ -76,12 +76,19 @@ function RouteComponent() {
           </div>
         </div>
 
-        <div className="mt-24 border-t border-white/5 flex justify-center">
+        <div className="mt-6 border-t border-white/10 flex justify-center bg-slate-900/40 backdrop-blur-sm py-5">
           <Link
             to="/blogs"
-            className="text-gray-500 hover:text-white transition-colors font-mono text-[10px] uppercase tracking-[0.3em]"
+            className="group inline-flex items-center gap-3 text-slate-300 hover:text-white transition-all duration-300 font-mono text-sm uppercase tracking-[0.35em]"
           >
-            End of Module — Return to Overview
+            <span className="relative">
+              End of Module
+              <span className="absolute left-0 -bottom-1 h-px w-0 bg-blue-400 transition-all duration-300 group-hover:w-full" />
+            </span>
+
+            <span className="text-blue-400 opacity-70 group-hover:opacity-100 transition-opacity">
+              — Return to Overview
+            </span>
           </Link>
         </div>
       </div>

@@ -1,21 +1,29 @@
-import img from "./portfolio.webp";
+import { BuildMyWebsite } from "./BuildMyWebsite";
+import { GetMyDomain } from "./GetMyDomain";
+import { TabbedGrid } from "../../../../components/UI/TabbedGrid";
+import Example from "./Example";
 
 const PersonalPortfolio = () => {
-  return (
-    <div className="space-y-6">
-      <div className="relative w-full max-w-xl mx-auto overflow-hidden rounded-2xl border border-white/10 bg-white/5">
-        <img
-          src={img}
-          alt="c# Programming"
-          className="w-full h-75 md:h-100 object-contain p-4"
-        />
-      </div>
+  // 1. Define your steps in an array
+  const mySteps = [
+    {
+      id: "domain",
+      title: "Get Your Domain",
+      content: <GetMyDomain />,
+    },
+    {
+      id: "build",
+      title: "Build Your Website",
+      content: <BuildMyWebsite />,
+    },
+    {
+      id: "example",
+      title: "Build and Deploy Example",
+      content: <Example />,
+    },
+  ];
 
-      <div className="prose prose-invert">
-        <p></p>
-      </div>
-    </div>
-  );
+  return <TabbedGrid tabs={mySteps} />;
 };
 
 export default PersonalPortfolio;

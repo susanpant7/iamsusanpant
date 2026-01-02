@@ -24,7 +24,7 @@ const BeautifulTitle = ({ label, title, subtitle }: BeautifulTitleProps) => {
   const { normal, highlighted } = splitTitle(title);
 
   return (
-    <div className="relative mb-16 flex flex-col items-start w-full">
+    <div className="relative mb-4 flex flex-col items-start w-full">
       {/* 1. Top Label (only if provided) */}
       {label && (
         <div className="flex items-center gap-3 mb-4 group">

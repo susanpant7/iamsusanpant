@@ -26,7 +26,7 @@ export const Section = ({
   return (
     <section
       id={id}
-      className={`relative w-full min-h-screen py-24 px-6 md:px-12 flex flex-col items-center overflow-hidden bg-transparent ${className}`}
+      className={`relative w-full min-h-screen pt-24 pb-5 px-6 md:px-12 flex flex-col items-center overflow-hidden bg-transparent ${className}`}
     >
       {/* Subtle Background Glow - Follows your Navy Root Theme */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none z-0">

@@ -11,9 +11,7 @@ run the app
 
 you can use tailwind css in the app now
 
-(keep the app running)
-
-next : install tanstack router
+next : install tanstack router (famous for ... )
     ==> see https://tanstack.com/router/latest/docs/framework/react/quick-start
         npm install @tanstack/react-router
         npm install -D @tanstack/router-plugin @tanstack/react-router-devtools
@@ -61,13 +59,18 @@ Outlet => route page (/ or /about or /contact)
 <div>Hello "__root"!</div> => this will be visible on every page
 
 create index.tsx page inside the routes folder ==> this will be / page
+
+can simply ask AI to create a portfolio page content using tailwind css for the following details:
+ <give your details>
+
+Note: if you want. additoinal pages in your app,
 create about.tsx or about/index.tsx inside the routes folder ==> this will be /about page
 
 React app with tailwind css and tanstack router is setup
 
 next: add a header
 
-create src/components/header/Header.tsx page
+create src/components/header/Header.tsx
 
 modify your RootComponent to:
 function RootComponent() {
@@ -81,16 +84,42 @@ function RootComponent() {
   );
 }
 
+if you have multiple pages,
+you might need this configuration as well, else you might see 404 when directly navigating to 
+<your_website>/*
+create a vercel.json file and then put this
+{
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
 
+your app is now ready to be published
+
+create a repo in github and push the code changes to github
+
+now for the deployment part
 -------------------------------
 deploy in vercel
 -------------------------------
-connect your github to vercel
+create a vercel account
+connect your github to your  vercel account
 select your repo
 build
 
 connect to your domain:
 project settings > domains
-add domain
-Update your domain's nameservers to enable Vercel DNS. ==> copy and paste the domain
+add your domain (your domainname.com.np)
+copy the vercel DNS
+go to your domain dashboard page in mercantile  - click edit dns on your active domain tab > edit dns
+Update your primay nameservers with the vercel dns (for both primary and secondary)
+it will take some time to reflect the changes 
+you are all good 
 
+Congratulations! you have your own website ready now
+
+If you make any changes in your code and push it to github, the vercel will auto build and deploy it
+if the changes are not reflected, look for logs in the deployment tab of vercel > you application

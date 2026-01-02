@@ -13,6 +13,7 @@ import {
   Instagram,
   Download,
 } from "lucide-react";
+import { Section } from "../../../components/UI/SectionHeader";
 
 const Contact = () => {
   const [copied, setCopied] = useState(false);
@@ -25,7 +26,7 @@ const Contact = () => {
   };
 
   return (
-    <section className="min-h-screen w-full pt-32 pb-20 px-6 ">
+    <Section id="contact-page">
       <div className="max-w-5xl mx-auto">
         {/* Header Section */}
         <div className="text-center mb-20">
@@ -225,7 +226,7 @@ const Contact = () => {
           </div>
         </div>
       </div>
-    </section>
+    </Section>
   );
 };
 

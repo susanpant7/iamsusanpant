@@ -7,7 +7,7 @@ import { GlassCard } from "../../../components/UI/Common";
 
 const Blog = () => {
   return (
-    <Section id="courses">
+    <Section id="blogs">
       <SectionHeader
         icon={BookOpen}
         label="My Blogs"
