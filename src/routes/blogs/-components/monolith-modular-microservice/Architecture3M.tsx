@@ -66,7 +66,7 @@ const Architecture3M = () => {
             {/* Grocery Store Architecture Guide */}
             <section className="max-w-5xl mx-auto mb-16">
                 <h1 className="text-4xl font-bold text-center mb-4">
-                    Stop Over-Engineering: The Grocery Store Guide to Architecture
+                    Stop Over-Engineering
                 </h1>
 
                 <p className="text-center text-blue-200 max-w-3xl mx-auto mb-10">
