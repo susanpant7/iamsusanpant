@@ -4,6 +4,7 @@ import MachineLearning from "../-components/MachineLearning";
 import PersonalPortfolio from "../-components/my-portfolio/PersonalPortfolio";
 import Python from "../-components/Python";
 import { LOGOS } from "../../../lib/Logos";
+import Architecture3M from "../-components/monolith-modular-microservice/Architecture3M.tsx";
 
 export const BLOGS = [
   {
@@ -33,9 +34,17 @@ export const BLOGS = [
     logo: LOGOS.csharp,
     component: AwaitInCSharp,
   },
-
   {
     id: "4",
+    label: "Explore App Architecture",
+    title: "Architecture: Monolith → Modular → Microservices",
+    subtitle:
+        "Learn how apps evolve as traffic grows: start with a monolith, organize into a modular monolith, and finally scale with microservices. Covers scaling, deployments, team growth, and trade-offs.",
+    logo: LOGOS.architectureChoice,
+    component: Architecture3M, 
+  },
+  {
+    id: "5",
     label: "Start Your Python Journey",
     title: "Learn Python",
     subtitle:
@@ -44,7 +53,7 @@ export const BLOGS = [
     component: Python,
   },
   {
-    id: "5",
+    id: "6",
     label: "Understand Intelligent Systems",
     title: "Machine Learning",
     subtitle:
