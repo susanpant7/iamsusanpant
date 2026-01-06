@@ -1,75 +1,100 @@
-Creating a New Application: Which Architecture Should You Choose?
-Monolith? Modular Monolith ? or the fancy Microservices
+Domain = WHAT, Application = WHEN/WHAT SEQUENCE, Infrastructure = HOW.
 
+Infrastructure is all the TOOLS and SERVICES you use to run the business:
+The HOW you do things
+Replaceable/swappable
+Infrastructure is EVERYTHING that answers "HOW":
+How we store data? (Database)
 
-Microservices are everywhere.
-But here’s the truth:
-Microservices are like Ferraris: Everyone wants one, but most people are just driving to the grocery store. They are a platform concern, not a feature.
+How we run code? (Cloud/Server)
 
-So before choosing them, ask yourself — do you actually need them?
+How we communicate? (Email/SMS/APIs)
 
-Start by asking these questions:
+How we monitor? (Logging/Alerting)
 
-What are the core modules of the application?
+How we deploy? (CI/CD)
 
-How are those modules related to each other?
+Infrastructure = Tools
+Infrastructure = IMPLEMENTS INTERFACES
+infrastructure classes are replacable
+=================================================================================
 
-What kind of load does each module have?
+Application Layer: "What to do" (not "How to do it")
+Application layer cares only about the logic of what the application should achieve, 
+not the technical details of how it achieves it.
 
-Do some modules scale differently than others?
-
-Do any modules have different security or deployment needs?
-
-Only after answering these should you decide the architecture.
-
-What you can do:
-
-Start simple.
-
-Add modularity early.
-
-Split into microservices only when real, proven pain appears.
+Application = BUSINESS WORKFLOWS
+Application = Blueprint Steps 
 
 
 
 
- =============== =============== =============== =============== ===============
 
- Stop Over-Engineering: The Grocery Store Guide to Architecture 🍎
-Choosing an architecture is a platform concern, not a feature. You can sell an apple using any of these three, but the "cost of the building" is what changes.
 
-1. The Monolith (The Solo Shop)
-The Scene: You do it all. You're the cashier, the cleaner, and the accountant.
 
-The Technical Reality: One project, one database. Simple.
+I was learning about Clean Architecture in .NET and wanted to share a few simple takeaways.
+The name might sound intimidating at first, but at its core, it’s really just about separation of concerns.
 
-The Catch: If you get sick, the shop closes. If 50 people walk in, you panic.
+Clean Architecture focuses on grouping files and folders into clear layers, where each layer has a specific responsibility and a few simple rules.
 
-Verdict: Great for starting. Don't build a stadium for a 1-man show.
+<image>
 
-2. The Modular Monolith (The Department Store)
-The Scene: One big building, but you’ve got "zones." A Bakery desk, a Meat counter, and a separate Checkout.
+As shown in the diagram, there are four main layers:
 
-The Technical Reality: Different projects in one solution. They can talk to each other easily because they are under one roof.
+Presentation
 
-The Catch: You still share one electric grid and one plumbing system (The Database).
+Infrastructure
 
-Verdict: The Sweet Spot. It keeps your code clean without the "Microservice Tax."
+Application
 
-3. Microservices (The Separate Factory)
-The Scene: Your Bakery is so busy it needs its own industrial oven and a dedicated power line. So, you move the Bakery to a separate building across town.
+Domain
 
-The Technical Reality: The Bakery is now its own app with its own database. It sends bread to the main store via a truck (The Network).
+The key rule is that dependencies flow inward:
+Presentation → Application → Domain
 
-The Catch: If the truck gets stuck in traffic (Network Lag), the store has no bread. It’s expensive and complex to manage.
+This means, in a typical request flow, a request first reaches the Presentation layer (API endpoint or controller).
+The controller then calls a service in the Application layer, which in turn interacts with the Domain logic.
+Interfaces are usually defined in the Application layer, while their implementations live either in:
 
-Verdict: Only do this for the parts of your app that are "exploding" and need their own "power grid."
+the Application layer (if it’s pure business logic), or
 
-The Moral of the Story
-You don’t need a Ferrari to go to the grocery store two blocks away.
+the Infrastructure layer (if it involves tools like databases, email, or external services).
 
-Microservices are an optimization, not a starting point.
+For example, repository implementations (IRepository) usually belong to the Infrastructure project.
 
-Most apps fail because they were so "future-proof" they required 10 DevOps engineers just to open the front door.
+Why do this?
 
-Rule of thumb: Start with a Modular Monolith. It keeps your "departments" organized from day one. If your Bakery ever gets too big for the building, you can ship it off to its own factory later.
+Each layer is clearly separated and can usually be worked on independently
+
+The Domain layer stays clean, technology-agnostic, and free from external dependencies
+
+The Application layer defines what needs to happen, while the Infrastructure layer defines how it happens
+
+The Presentation layer focuses mainly on API endpoints, controllers, and middleware
+
+One of the biggest advantages is how easy it becomes to change tools:
+
+Switching from SQL Server to PostgreSQL only affects the Infrastructure layer
+
+Switching from REST APIs to gRPC mainly affects the Presentation layer only
+
+Each layer can be tested more easily in isolation
+
+Will I always use Clean Architecture?
+
+Not necessarily. I guess architecture is about choosing the right trade-offs based on our project’s needs.
+For smaller or simpler applications, merging the Application and Domain layers can be a perfectly reasonable and practical choice.
+
+Clean Architecture is not a rulebook—it’s a guideline. We should use what makes sense for our project.
+
+
+Ease of Technology Changes: For instance, switching from SQL Server to PostgreSQL requires updates only in the Infrastructure layer
+
+Flexibility in Interfaces: Transitioning from REST to gRPC does not affect core business rules
+
+Simplified Testing: Unit tests can focus on business logic without relying on databases or APIs
+
+It is worth noting that architecture should be adapted to project needs. For smaller applications or tight deadlines, merging the Application and Domain layers is often a practical approach. Architecture is ultimately about making trade-offs that best suit your project requirements.
+
+Clean Architecture is not just about clean code—it is about building robust, maintainable, and evolvable systems.
+

@@ -12,7 +12,7 @@ function RouteComponent() {
   const { blogId } = Route.useParams();
 
   // Lookup the course in the data array
-  const blog = BLOGS.find((c) => c.id === blogId);
+  const blog = BLOGS.find((c) => c.id.toString() === blogId.toString());
 
   if (!blog) {
     return (

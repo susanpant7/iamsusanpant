@@ -38,4 +38,6 @@ export const LOGOS = {
     "https://www.svgrepo.com/show/339328/machine-learning-01.svg",
   architectureChoice:
     "https://www.svgrepo.com/show/499819/architecture.svg",
+    cleanCodeArch:
+    "https://www.svgrepo.com/show/494585/clean-code-program.svg",
 };

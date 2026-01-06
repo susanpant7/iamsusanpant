@@ -5,6 +5,7 @@ import PersonalPortfolio from "../-components/my-portfolio/PersonalPortfolio";
 import Python from "../-components/Python";
 import { LOGOS } from "../../../lib/Logos";
 import Architecture3M from "../-components/monolith-modular-microservice/Architecture3M.tsx";
+import CleanCodeArch from "../-components/clean-code-arch/CleanCodeArch.tsx";
 
 export const BLOGS = [
   {
@@ -39,9 +40,18 @@ export const BLOGS = [
     label: "Explore App Architecture",
     title: "Architecture: Monolith → Modular → Microservices",
     subtitle:
-        "Learn how apps evolve as traffic grows: start with a monolith, organize into a modular monolith, and finally scale with microservices. Covers scaling, deployments, team growth, and trade-offs.",
+      "Learn how apps evolve as traffic grows: start with a monolith, organize into a modular monolith, and finally scale with microservices. Covers scaling, deployments, team growth, and trade-offs.",
     logo: LOGOS.architectureChoice,
-    component: Architecture3M, 
+    component: Architecture3M,
+  },
+  {
+    id: "clean-code-architecture",
+    label: "Clean Code Architecture",
+    title: "Clean Architecture in .NET",
+    subtitle:
+      "Understanding Layers, Responsibilities, and the Flow of Dependencies",
+    logo: LOGOS.cleanCodeArch,
+    component: CleanCodeArch,
   },
   {
     id: "5",
