@@ -1,5 +1,3 @@
-import { data } from "framer-motion/client";
-
 export const LOGOS = {
   csharp:
     "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg",
