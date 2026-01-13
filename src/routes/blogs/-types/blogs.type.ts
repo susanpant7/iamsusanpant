@@ -6,7 +6,6 @@ import Python from "../-components/Python";
 import { LOGOS } from "../../../lib/Logos";
 import Architecture3M from "../-components/monolith-modular-microservice/Architecture3M.tsx";
 import CleanCodeArch from "../-components/clean-code-arch/CleanCodeArch.tsx";
-import CodeFirstDataAccess from "../-components/fluent-api-data-access/FluentApiDataAccessExample.tsx";
 import FluentApiDataAccessExample from "../-components/fluent-api-data-access/FluentApiDataAccessExample.tsx";
 
 export const BLOGS = [
