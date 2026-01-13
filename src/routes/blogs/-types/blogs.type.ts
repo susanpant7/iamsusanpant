@@ -6,6 +6,8 @@ import Python from "../-components/Python";
 import { LOGOS } from "../../../lib/Logos";
 import Architecture3M from "../-components/monolith-modular-microservice/Architecture3M.tsx";
 import CleanCodeArch from "../-components/clean-code-arch/CleanCodeArch.tsx";
+import CodeFirstDataAccess from "../-components/fluent-api-data-access/FluentApiDataAccessExample.tsx";
+import FluentApiDataAccessExample from "../-components/fluent-api-data-access/FluentApiDataAccessExample.tsx";
 
 export const BLOGS = [
   {
@@ -52,6 +54,24 @@ export const BLOGS = [
       "Understanding Layers, Responsibilities, and the Flow of Dependencies",
     logo: LOGOS.cleanCodeArch,
     component: CleanCodeArch,
+  },
+  {
+    id: "fluent-api-data-access",
+    label: "Fluent API Data Access",
+    title: "Clean Data Access Layer with Fluent API",
+    subtitle:
+      "What I Learned from Keeping Entities Clean and Centralizing Schema Configuration",
+    logo: LOGOS.fluentApi,
+    component: FluentApiDataAccessExample,
+  },
+  {
+    id: "code-first",
+    label: "Clean Code Architecture",
+    title: "Clean Architecture in .NET",
+    subtitle:
+      "Understanding Layers, Responsibilities, and the Flow of Dependencies",
+    logo: LOGOS.database,
+    component: CodeFirstDataAccess,
   },
   {
     id: "5",

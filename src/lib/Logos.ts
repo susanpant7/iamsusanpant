@@ -1,3 +1,5 @@
+import { data } from "framer-motion/client";
+
 export const LOGOS = {
   csharp:
     "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg",
@@ -40,4 +42,6 @@ export const LOGOS = {
     "https://www.svgrepo.com/show/499819/architecture.svg",
     cleanCodeArch:
     "https://www.svgrepo.com/show/494585/clean-code-program.svg",
+    fluentApi:
+    "https://www.svgrepo.com/show/281999/server-database.svg",
 };

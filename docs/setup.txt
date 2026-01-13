@@ -1,100 +1,38 @@
-Domain = WHAT, Application = WHEN/WHAT SEQUENCE, Infrastructure = HOW.
+How I Approach the Data Access Layer (Code-First)
 
-Infrastructure is all the TOOLS and SERVICES you use to run the business:
-The HOW you do things
-Replaceable/swappable
-Infrastructure is EVERYTHING that answers "HOW":
-How we store data? (Database)
+I’ve been using the code-first approach for building the data access layer, where the database schema evolves directly from the code.
 
-How we run code? (Cloud/Server)
+The general flow stays the same:
+entity classes are created first, the DbContext is defined, schemas are configured, migrations are generated, and the database is updated based on those changes. The database ends up being a reflection of the code rather than the other way around.
 
-How we communicate? (Email/SMS/APIs)
+What I Learned Along the Way
 
-How we monitor? (Logging/Alerting)
+Initially, I used a mix of data annotations and Fluent API. Data annotations worked fine for basic rules like required fields or max lengths. But as soon as things got slightly more complex—delete behaviors, composite keys, or advanced relationships—I had to fall back to the Fluent API anyway.
 
-How we deploy? (CI/CD)
+Over time, I realized that this mix caused the schema definition to be split across multiple places. Some rules lived in the entity, others in the DbContext. Reading or modifying the table design meant jumping back and forth, which didn’t feel great from a maintainability perspective.
 
-Infrastructure = Tools
-Infrastructure = IMPLEMENTS INTERFACES
-infrastructure classes are replacable
-=================================================================================
+That’s when I decided to rely entirely on the Fluent API.
 
-Application Layer: "What to do" (not "How to do it")
-Application layer cares only about the logic of what the application should achieve, 
-not the technical details of how it achieves it.
+How I Structure It Now
 
-Application = BUSINESS WORKFLOWS
-Application = Blueprint Steps 
+Instead of placing all configuration logic inside ApplicationDbContext, I use separate configuration classes for each entity.
+For example, a User entity has a corresponding UserConfiguration class, and all database-related rules for that entity live there.
+
+To keep things simple and avoid manually wiring up each configuration, I use:
+
+modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
 
 
+This automatically applies all configuration classes in the assembly.
 
+The Outcome
 
+What I noticed after adopting this approach:
 
+Entity classes remain clean and focused on domain logic
 
+Database configuration is explicit and centralized
 
-I was learning about Clean Architecture in .NET and wanted to share a few simple takeaways.
-The name might sound intimidating at first, but at its core, it’s really just about separation of concerns.
+The data access layer feels easier to reason about as it grows
 
-Clean Architecture focuses on grouping files and folders into clear layers, where each layer has a specific responsibility and a few simple rules.
-
-<image>
-
-As shown in the diagram, there are four main layers:
-
-Presentation
-
-Infrastructure
-
-Application
-
-Domain
-
-The key rule is that dependencies flow inward:
-Presentation → Application → Domain
-
-This means, in a typical request flow, a request first reaches the Presentation layer (API endpoint or controller).
-The controller then calls a service in the Application layer, which in turn interacts with the Domain logic.
-Interfaces are usually defined in the Application layer, while their implementations live either in:
-
-the Application layer (if it’s pure business logic), or
-
-the Infrastructure layer (if it involves tools like databases, email, or external services).
-
-For example, repository implementations (IRepository) usually belong to the Infrastructure project.
-
-Why do this?
-
-Each layer is clearly separated and can usually be worked on independently
-
-The Domain layer stays clean, technology-agnostic, and free from external dependencies
-
-The Application layer defines what needs to happen, while the Infrastructure layer defines how it happens
-
-The Presentation layer focuses mainly on API endpoints, controllers, and middleware
-
-One of the biggest advantages is how easy it becomes to change tools:
-
-Switching from SQL Server to PostgreSQL only affects the Infrastructure layer
-
-Switching from REST APIs to gRPC mainly affects the Presentation layer only
-
-Each layer can be tested more easily in isolation
-
-Will I always use Clean Architecture?
-
-Not necessarily. I guess architecture is about choosing the right trade-offs based on our project’s needs.
-For smaller or simpler applications, merging the Application and Domain layers can be a perfectly reasonable and practical choice.
-
-Clean Architecture is not a rulebook—it’s a guideline. We should use what makes sense for our project.
-
-
-Ease of Technology Changes: For instance, switching from SQL Server to PostgreSQL requires updates only in the Infrastructure layer
-
-Flexibility in Interfaces: Transitioning from REST to gRPC does not affect core business rules
-
-Simplified Testing: Unit tests can focus on business logic without relying on databases or APIs
-
-It is worth noting that architecture should be adapted to project needs. For smaller applications or tight deadlines, merging the Application and Domain layers is often a practical approach. Architecture is ultimately about making trade-offs that best suit your project requirements.
-
-Clean Architecture is not just about clean code—it is about building robust, maintainable, and evolvable systems.
-
+Overall, it led to a cleaner mental model for both the code and the database schema.
