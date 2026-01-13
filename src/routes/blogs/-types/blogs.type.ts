@@ -65,15 +65,6 @@ export const BLOGS = [
     component: FluentApiDataAccessExample,
   },
   {
-    id: "code-first",
-    label: "Clean Code Architecture",
-    title: "Clean Architecture in .NET",
-    subtitle:
-      "Understanding Layers, Responsibilities, and the Flow of Dependencies",
-    logo: LOGOS.database,
-    component: CodeFirstDataAccess,
-  },
-  {
     id: "5",
     label: "Start Your Python Journey",
     title: "Learn Python",
