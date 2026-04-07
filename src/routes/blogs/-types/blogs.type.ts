@@ -83,7 +83,7 @@ export const BLOGS = [
     component: MachineLearning,
   },
   {
-    id: "7",
+    id: "gemma4",
     label: "Running gemma4 on your local machine",
     title: "gemma4",
     subtitle:
