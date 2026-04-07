@@ -7,6 +7,7 @@ import { LOGOS } from "../../../lib/Logos";
 import Architecture3M from "../-components/monolith-modular-microservice/Architecture3M.tsx";
 import CleanCodeArch from "../-components/clean-code-arch/CleanCodeArch.tsx";
 import FluentApiDataAccessExample from "../-components/fluent-api-data-access/FluentApiDataAccessExample.tsx";
+import Gemma4 from "../-components/gemma4/Gemma4.tsx";
 
 export const BLOGS = [
   {
@@ -80,5 +81,14 @@ export const BLOGS = [
       "Explore the fundamentals of machine learning, from data preprocessing to training and evaluating intelligent models.",
     logo: LOGOS.machinelearning,
     component: MachineLearning,
+  },
+  {
+    id: "7",
+    label: "Running gemma4 on your local machine",
+    title: "gemma4",
+    subtitle:
+      "Learn how to run the gemma4 language model on your local machine.",
+    logo: LOGOS.gemma4,
+    component: Gemma4,
   },
 ];
