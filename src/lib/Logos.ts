@@ -44,4 +44,6 @@ export const LOGOS = {
     "https://www.svgrepo.com/show/281999/server-database.svg",
     gemma4:
     "https://www.svgrepo.com/show/339328/machine-learning-01.svg",
+    fineTuneAi:
+    "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg",
 };

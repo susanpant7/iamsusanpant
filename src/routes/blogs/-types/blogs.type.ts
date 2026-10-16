@@ -8,6 +8,7 @@ import Architecture3M from "../-components/monolith-modular-microservice/Archite
 import CleanCodeArch from "../-components/clean-code-arch/CleanCodeArch.tsx";
 import FluentApiDataAccessExample from "../-components/fluent-api-data-access/FluentApiDataAccessExample.tsx";
 import Gemma4 from "../-components/gemma4/Gemma4.tsx";
+import FineTuneAIModel from "../-components/finetune-ai-model/FineTuneAIModel.tsx";
 
 export const BLOGS = [
   {
@@ -90,5 +91,14 @@ export const BLOGS = [
       "Learn how to run the gemma4 language model on your local machine.",
     logo: LOGOS.gemma4,
     component: Gemma4,
+  },
+  {
+    id: "finetune-ai-model",
+    label: "Fine-Tune an AI Model for IT Support Routing",
+    title: "FineTuneAIModel",
+    subtitle:
+      "Teach a small model to read an IT support issue, route it to the right team, and suggest the first steps to fix it.",
+    logo: LOGOS.fineTuneAi,
+    component: FineTuneAIModel,
   },
 ];
