@@ -6,6 +6,7 @@ import colabNotebook from "./colab-notebook.webp";
 import colabGpu from "./colab-gpu.webp";
 import colabFiles from "./colab-files.webp";
 import trainedModel from "./trained-model.webp";
+import { AmritStoryIntro, AmritStoryOutro } from "./AmritStory";
 
 const INSTRUCTION =
   "Route this support issue to the correct team and employee, and suggest the first steps to resolve it.";
@@ -84,7 +85,6 @@ const OVERVIEW = [
   "Train the model",
   "Export the trained model",
   "Run the trained model in Ollama",
-  "Compare before and after",
 ];
 
 const DATASET_RULES = [
@@ -222,9 +222,29 @@ export default function FineTuneAIModel() {
           <Badge>LoRA</Badge>
         </div>
         <p className="text-xl text-slate-300 leading-relaxed">
+          Amrit was told to add AI. Then the lobby Wi-Fi died. This is the
+          story of why he fine-tuned a small model, then the exact steps to
+          do it yourself.
+        </p>
+      </section>
+
+      <AmritStoryIntro />
+
+      <hr className="border-white/10" />
+
+      <section className="space-y-4">
+        <div className="font-mono text-[10px] font-bold uppercase tracking-[0.25em] text-blue-400">
+          The walkthrough
+        </div>
+        <h3 className="text-xl font-black uppercase tracking-tighter text-white">
+          Teach the model to route an IT issue
+        </h3>
+        <p className="text-slate-400 leading-relaxed">
           We will teach a small AI model to read an IT support issue and tell
           us two things: which team should handle it, and who on that team
-          should take it, along with the first steps to fix it.
+          should take it, along with the first steps to fix it. In the
+          dataset below that answer is a single readable line. In Amrit’s app
+          the same facts become JSON his ticket code can parse.
         </p>
       </section>
 
@@ -468,21 +488,9 @@ export default function FineTuneAIModel() {
         </Step>
       </div>
 
-      <div className="p-8 rounded-2xl bg-linear-to-br from-blue-500/10 to-transparent border border-blue-500/20">
-        <h4 className="font-black uppercase tracking-tighter text-white mb-4">
-          Compare before and after
-        </h4>
-        <ul className="space-y-3 text-slate-400 font-mono text-sm">
-          <li className="flex gap-3">
-            <span className="text-blue-400">Before</span>
-            A long, general answer that does not know our teams or names.
-          </li>
-          <li className="flex gap-3">
-            <span className="text-blue-400">After</span>
-            Team, assignee, and the first steps to fix the issue.
-          </li>
-        </ul>
-      </div>
+      <hr className="border-white/10" />
+
+      <AmritStoryOutro />
     </div>
   );
 }

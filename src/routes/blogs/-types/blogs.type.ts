@@ -97,7 +97,7 @@ export const BLOGS = [
     label: "Fine-Tune an AI Model for IT Support Routing",
     title: "FineTuneAIModel",
     subtitle:
-      "Teach a small model to read an IT support issue, route it to the right team, and suggest the first steps to fix it.",
+      "Amrit was told to add AI. Then the lobby Wi-Fi died. Fine-tune a small model that routes IT issues to the right team, every time.",
     logo: LOGOS.fineTuneAi,
     component: FineTuneAIModel,
   },
