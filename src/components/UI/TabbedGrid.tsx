@@ -38,15 +38,15 @@ export const TabbedGrid = ({ tabs }: TabbedGridProps) => {
   };
 
   return (
-    <div className="w-full text-white font-sans bg-transparent">
+    <div className="w-full font-sans bg-transparent">
       {/* 1. NAV BAR: No extra margins */}
-      <nav className="sticky top-0 mb-4 z-50 sk-panel !rounded-none">
+      <nav className="sticky top-0 mb-4 z-50 sk-panel !rounded-2xl p-2">
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="w-full flex items-center justify-between p-4 transition-all"
+          className="sk-brass !rounded-xl w-full flex items-center justify-between p-4"
         >
           <div className="flex items-center gap-2">
-            <Menu size={18} className="text-blue-400" />
+            <Menu size={18} />
             <span className="text-xs font-bold uppercase tracking-tight">
               {tabs[activeIdx].title}
             </span>
@@ -56,7 +56,7 @@ export const TabbedGrid = ({ tabs }: TabbedGridProps) => {
 
         {/* 2. DROPDOWN LIST: Positioned absolutely right under nav */}
         {isMenuOpen && (
-          <div className="absolute left-0 right-0 sk-inset !rounded-none">
+          <div className="absolute left-0 right-0 top-full mt-2 sk-panel !rounded-2xl p-3 space-y-2">
             {tabs.map((tab, index) => (
               <button
                 key={tab.id}
@@ -64,10 +64,8 @@ export const TabbedGrid = ({ tabs }: TabbedGridProps) => {
                   setActiveIdx(index);
                   setIsMenuOpen(false);
                 }}
-                className={`w-full text-left px-4 py-3 text-sm transition-colors border-l-4 ${
-                  activeIdx === index
-                    ? "bg-white/5 border-blue-500 text-blue-400"
-                    : "border-transparent text-slate-400 hover:bg-white/5"
+                className={`sk-brass !rounded-xl w-full text-left px-4 py-3 text-sm font-semibold ${
+                  activeIdx === index ? "underline underline-offset-4 decoration-2" : ""
                 }`}
               >
                 {index + 1}. {tab.title}
@@ -83,13 +81,11 @@ export const TabbedGrid = ({ tabs }: TabbedGridProps) => {
         <div className="w-full">{tabs[activeIdx].content}</div>
 
         {/* Bottom Navigation: Tightly coupled to content */}
-        <div className="flex mt-4 sk-panel !rounded-none overflow-hidden">
+        <div className="flex gap-3 mt-4">
           <button
             onClick={prevTab}
-            className={`flex-1 flex items-center justify-center gap-2 py-5 font-bold transition-all ${
-              activeIdx === 0
-                ? "hidden"
-                : "border-r border-white/10 text-slate-400 hover:bg-white/5"
+            className={`sk-brass flex-1 flex items-center justify-center gap-2 py-4 font-bold ${
+              activeIdx === 0 ? "hidden" : ""
             }`}
           >
             <ChevronLeft size={16} /> Prev
@@ -97,11 +93,7 @@ export const TabbedGrid = ({ tabs }: TabbedGridProps) => {
 
           <button
             onClick={nextTab}
-            className={`flex-1 flex items-center justify-center gap-2 py-5 font-bold transition-all ${
-              activeIdx === tabs.length - 1
-                ? "sk-brass !rounded-none"
-                : "text-slate-200 hover:bg-white/5"
-            }`}
+            className="sk-brass flex-1 flex items-center justify-center gap-2 py-4 font-bold"
           >
             {activeIdx === tabs.length - 1 ? "Finish" : "Next"}
             {activeIdx !== tabs.length - 1 && <ChevronRight size={16} />}

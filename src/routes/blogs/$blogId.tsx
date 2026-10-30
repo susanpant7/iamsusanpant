@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Section } from "../../components/UI/SectionHeader";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import { BLOGS } from "./-types/blogs.type";
 import BeautifulTitle from "../../components/UI/Title";
 
@@ -19,7 +19,7 @@ function RouteComponent() {
       <Section className="flex items-center justify-center min-h-[60vh]">
         <div className="text-center">
           <h1 className="sk-emboss text-4xl font-serif font-bold mb-4">404</h1>
-          <p className="text-gray-500 mb-8 font-mono uppercase tracking-widest">
+          <p className="text-gray-500 mb-8 font-mono uppercase tracking-[0.08em]">
             Module Not Found
           </p>
           <Link
@@ -60,31 +60,22 @@ function RouteComponent() {
           />
 
           <div
-            className="prose prose-invert max-w-none
-                   prose-headings:text-[#fff8ee]
-                   prose-headings:font-serif prose-headings:font-bold
-                   prose-headings:tracking-tight
-                   prose-p:text-gray-400
-                   prose-p:leading-relaxed
-                   prose-strong:text-blue-400"
+            className="clay-article sk-panel p-6 md:p-10"
           >
             <SpecificContent />
           </div>
         </div>
 
-        <div className="mt-6 sk-panel flex justify-center py-5">
+        <div className="mt-8 sk-panel flex flex-col items-center gap-4 py-8 px-6 text-center">
+          <p className="text-sm font-bold uppercase tracking-[0.12em] text-gray-400">
+            End of module
+          </p>
           <Link
             to="/blogs"
-            className="group inline-flex items-center gap-3 text-slate-300 hover:text-white transition-all duration-300 font-mono text-sm uppercase tracking-[0.35em]"
+            className="sk-brass inline-flex items-center gap-3 px-8 py-4 text-base font-bold"
           >
-            <span className="relative">
-              End of Module
-              <span className="absolute left-0 -bottom-1 h-px w-0 bg-blue-400 transition-all duration-300 group-hover:w-full" />
-            </span>
-
-            <span className="text-blue-400 opacity-70 group-hover:opacity-100 transition-opacity">
-              — Return to Overview
-            </span>
+            Return to overview
+            <ArrowRight size={18} />
           </Link>
         </div>
       </div>

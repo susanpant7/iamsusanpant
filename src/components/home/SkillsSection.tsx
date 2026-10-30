@@ -18,7 +18,7 @@ const SkillBadge = ({ icon, name }: { icon: string; name: string }) => (
       loading="lazy"
       className="w-10 h-10 mb-4 object-contain"
     />
-    <span className="text-gray-400 text-[10px] font-bold uppercase tracking-widest text-center">
+    <span className="text-gray-400 text-xs font-bold uppercase tracking-[0.08em] text-center">
       {name}
     </span>
   </div>
@@ -45,7 +45,7 @@ const StrategyCard = ({ title, description, icon, tags, logo }: any) => (
       {tags.map((tag: string) => (
         <span
           key={tag}
-          className="sk-inset !rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-blue-400"
+          className="sk-inset !rounded-full px-3 py-1 text-xs font-bold uppercase tracking-[0.08em] text-blue-400"
         >
           {tag}
         </span>
@@ -56,7 +56,7 @@ const StrategyCard = ({ title, description, icon, tags, logo }: any) => (
 
 const SkillsSection = () => {
   return (
-    <section className="py-20 px-8 sk-defer">
+    <section className="py-20 px-8">
       <div className="max-w-7xl mx-auto">
         <SectionHeader
           icon={Terminal}
@@ -90,7 +90,7 @@ const SkillsSection = () => {
 
         {/* Development Environment */}
         <div className="mb-20">
-          <h4 className="sk-brass-text font-mono mb-8 uppercase tracking-widest text-xs">
+          <h4 className="text-gray-400 !font-sans !font-bold mb-6 uppercase tracking-[0.1em] text-sm">
             IDEs & Cloud
           </h4>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4">

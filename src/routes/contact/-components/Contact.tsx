@@ -33,10 +33,10 @@ const Contact = () => {
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="inline-flex items-center gap-2 px-4 py-2 sk-inset !rounded-full sk-brass-text font-mono text-[10px] uppercase tracking-[0.3em] mb-6"
+            className="inline-flex items-center gap-2 px-4 py-2 sk-inset !rounded-full sk-brass-text font-mono text-xs uppercase tracking-[0.1em] mb-6"
           >
             <span className="relative flex h-2 w-2">
-                            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400 shadow-[0_0_4px_#34d399]"></span>
+                            <span className="relative inline-flex rounded-full h-2 w-2 bg-[var(--accent)]"></span>
             </span>
             Available for new opportunities
           </motion.div>
@@ -46,7 +46,7 @@ const Contact = () => {
             animate={{ opacity: 1, y: 0 }}
             className="text-5xl md:text-8xl font-serif font-bold sk-emboss tracking-tight mb-6"
           >
-            Get in <span className="sk-brass-text italic">touch.</span>
+            Get in touch.
           </motion.h1>
 
           <motion.p
@@ -69,7 +69,7 @@ const Contact = () => {
             <a
               href="/susan_cv.pdf"
               download="Susan_Pant_cv.pdf"
-              className="sk-brass group relative inline-flex items-center gap-3 px-8 py-4 font-black uppercase text-xs tracking-[0.2em]"
+              className="sk-brass group relative inline-flex items-center gap-3 px-8 py-4 font-black uppercase text-xs tracking-[0.1em]"
             >
               <span className="relative z-10 flex items-center gap-3">
                 Download Curriculum Vitae
@@ -94,7 +94,7 @@ const Contact = () => {
                 <Mail size={32} />
               </div>
               <div className="text-left">
-                <h3 className="text-gray-500 text-xs font-black uppercase tracking-[0.2em] mb-1">
+                <h3 className="text-gray-500 text-xs font-black uppercase tracking-[0.1em] mb-1">
                   Direct Email
                 </h3>
                 <p className="text-2xl md:text-3xl font-bold text-white font-mono break-all">
@@ -102,13 +102,13 @@ const Contact = () => {
                 </p>
               </div>
             </div>
-            <div className="flex items-center gap-2 px-6 py-3 sk-inset text-gray-400 group-hover:text-white transition-colors">
+            <div className="sk-brass flex items-center gap-2 px-6 py-3">
               {copied ? (
-                <Check className="text-green-500" />
+                <Check size={20} />
               ) : (
                 <Copy size={20} />
               )}
-              <span className="text-sm font-bold uppercase tracking-widest">
+              <span className="text-sm font-bold uppercase tracking-[0.08em]">
                 {copied ? "Copied" : "Copy"}
               </span>
             </div>
@@ -122,16 +122,13 @@ const Contact = () => {
             className="sk-panel group p-8 flex items-start justify-between"
           >
             <div>
-              <div className="p-4 sk-key text-[#ffc9a0] mb-6 inline-block">
+              <div className="p-4 sk-key text-black mb-6 inline-block">
                 <Linkedin size={28} />
               </div>
               <h3 className="text-xl font-serif font-bold sk-emboss mb-2">LinkedIn</h3>
               <p className="text-gray-500 text-sm">Professional networking</p>
             </div>
-            <ExternalLink
-              size={20}
-              className="text-gray-700 group-hover:text-blue-500 transition-colors"
-            />
+            <span className="sk-brass !rounded-xl p-2.5 shrink-0"><ExternalLink size={18} /></span>
           </a>
 
           <a
@@ -141,16 +138,13 @@ const Contact = () => {
             className="sk-panel group p-8 flex items-start justify-between"
           >
             <div>
-              <div className="p-4 sk-key text-[#ffc9a0] mb-6 inline-block">
+              <div className="p-4 sk-key text-black mb-6 inline-block">
                 <Github size={28} />
               </div>
               <h3 className="text-xl font-serif font-bold sk-emboss mb-2">GitHub</h3>
               <p className="text-gray-500 text-sm">Code contributions</p>
             </div>
-            <ExternalLink
-              size={20}
-              className="text-gray-700 group-hover:text-white transition-colors"
-            />
+            <span className="sk-brass !rounded-xl p-2.5 shrink-0"><ExternalLink size={18} /></span>
           </a>
 
           {/* Social Links Row 2 */}
@@ -161,16 +155,13 @@ const Contact = () => {
             className="sk-panel group p-8 flex items-start justify-between"
           >
             <div>
-              <div className="p-4 sk-key text-[#ffc9a0] mb-6 inline-block">
+              <div className="p-4 sk-key text-black mb-6 inline-block">
                 <Facebook size={28} />
               </div>
               <h3 className="text-xl font-serif font-bold sk-emboss mb-2">Facebook</h3>
               <p className="text-gray-500 text-sm">Personal updates</p>
             </div>
-            <ExternalLink
-              size={20}
-              className="text-gray-700 group-hover:text-blue-600 transition-colors"
-            />
+            <span className="sk-brass !rounded-xl p-2.5 shrink-0"><ExternalLink size={18} /></span>
           </a>
 
           <a
@@ -180,24 +171,21 @@ const Contact = () => {
             className="sk-panel group p-8 flex items-start justify-between"
           >
             <div>
-              <div className="p-4 sk-key text-[#ffc9a0] mb-6 inline-block">
+              <div className="p-4 sk-key text-black mb-6 inline-block">
                 <Instagram size={28} />
               </div>
               <h3 className="text-xl font-serif font-bold sk-emboss mb-2">Instagram</h3>
               <p className="text-gray-500 text-sm">Photography & stories</p>
             </div>
-            <ExternalLink
-              size={20}
-              className="text-gray-700 group-hover:text-pink-500 transition-colors"
-            />
+            <span className="sk-brass !rounded-xl p-2.5 shrink-0"><ExternalLink size={18} /></span>
           </a>
 
           {/* Location & Timezone Card */}
           <div className="md:col-span-2 p-8 sk-inset !rounded-3xl flex flex-col md:flex-row items-center justify-around gap-8">
             <div className="flex items-center gap-4">
-              <MapPin className="text-red-500/50" size={24} />
+              <MapPin className="text-black" size={24} />
               <div className="text-center md:text-left">
-                <p className="text-[10px] text-gray-600 font-black uppercase tracking-[0.2em]">
+                <p className="text-xs text-gray-600 font-black uppercase tracking-[0.1em]">
                   Based In
                 </p>
                 <p className="text-white font-bold text-lg leading-tight">
@@ -208,9 +196,9 @@ const Contact = () => {
             </div>
             <div className="h-px w-full md:h-12 md:w-px bg-black/50" />
             <div className="flex items-center gap-4">
-              <Globe className="text-blue-500/50" size={24} />
+              <Globe className="text-black" size={24} />
               <div className="text-center md:text-left">
-                <p className="text-[10px] text-gray-600 font-black uppercase tracking-[0.2em]">
+                <p className="text-xs text-gray-600 font-black uppercase tracking-[0.1em]">
                   Working Hours
                 </p>
                 <p className="text-white font-bold text-lg">Remote Friendly</p>

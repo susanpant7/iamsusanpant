@@ -41,7 +41,7 @@ const BlogContainer = () => {
                     />
                   </div>
 
-                  <span className="text-[10px] font-mono text-gray-500 font-bold tracking-[0.2em] uppercase mt-2">
+                  <span className="text-xs font-mono text-gray-500 font-bold tracking-[0.1em] uppercase mt-2">
                     M-{blog.id.padStart(2, "0")}
                   </span>
                 </div>
@@ -54,8 +54,8 @@ const BlogContainer = () => {
                   {blog.subtitle}
                 </p>
 
-                <div className="mt-auto w-full flex items-center justify-between pt-4 border-t border-black/50 shadow-[0_-1px_0_rgba(255,232,190,0.07)]">
-                  <div className="flex items-center gap-2 sk-brass-text font-bold text-[10px] uppercase tracking-widest group-hover:gap-4 transition-all">
+                <div className="mt-auto w-full flex items-center justify-between pt-4">
+                  <div className="sk-brass flex items-center gap-2 px-5 py-2.5 font-bold text-xs uppercase tracking-[0.08em]">
                     Start Learning <ArrowRight size={14} />
                   </div>
                 </div>

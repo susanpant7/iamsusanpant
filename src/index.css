@@ -1,65 +1,82 @@
 @import "tailwindcss";
 
 /*
-  Liquid-glass theme. Glass is faked with translucent gradients, a bright
-  specular top edge and soft shadows over one static, fixed background.
-  Only the fixed header uses a real backdrop blur (one small layer);
-  nothing loops or animates continuously.
-  (Class names keep the old "sk-" prefix so components stay untouched.)
+  Claymorphism theme, two colour roles only:
+    1. ink (black) text on paper (white) surfaces - everything that is not clickable
+    2. accent (blue) fill with white text         - buttons, links, next/prev, dropdowns
+  Soft, puffy shapes lit from the top-left; neutral grey shadows. No blur, no
+  transparency, no animation: cheap to paint.
+  Change --accent to re-colour every button at once.
+  Class names keep the old "sk-" prefix so components stay untouched.
 */
+
+:root {
+  --ink: #0a0a0a;
+  --paper: #ffffff;
+  --accent: #2563eb;
+  --accent-dark: #1d4ed8;
+  --on-accent: #ffffff;
+}
+
+/* Site is a single light theme; never let the OS dark mode flip `dark:` utilities */
+@custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
   --font-sans: "Schibsted Grotesk", ui-sans-serif, system-ui, sans-serif;
-  --font-serif: "Instrument Serif", Georgia, "Times New Roman", serif;
+  --font-serif: "Fraunces", Georgia, "Times New Roman", serif;
   --font-mono: "DM Mono", ui-monospace, "SF Mono", Menlo, monospace;
 
-  /* Old blue/indigo/cyan classes (incl. blog content) now resolve to
-     apricot / terracotta / sage so nothing reads as default "tech blue". */
-  --color-blue-100: #ffeedd;
-  --color-blue-200: #ffd9b8;
-  --color-blue-300: #ffc08f;
-  --color-blue-400: #ffa968;
-  --color-blue-500: #f08a48;
-  --color-blue-600: #d4692e;
-  --color-blue-700: #a94e22;
-  --color-blue-900: #4a2410;
-  --color-sky-300: #ffc08f;
-  --color-sky-400: #ffa968;
-  --color-sky-500: #f08a48;
-  --color-cyan-300: #cfe3c8;
-  --color-cyan-400: #a9cfa0;
-  --color-cyan-500: #86b87c;
-  --color-indigo-400: #e8876a;
-  --color-indigo-500: #d4694a;
-  --color-indigo-600: #b5503a;
-}
+  /* Every text colour used by the site and the blog posts collapses to black
+     (greys only for secondary text, all >= 7:1 on white). */
+  --color-white: #0a0a0a;
+  --color-gray-200: #0a0a0a;
+  --color-gray-300: #0a0a0a;
+  --color-gray-400: #0a0a0a;
+  --color-gray-500: #0a0a0a;
+  --color-gray-600: #0a0a0a;
+  --color-slate-100: #0a0a0a;
+  --color-slate-200: #0a0a0a;
+  --color-slate-300: #0a0a0a;
+  --color-slate-400: #0a0a0a;
+  --color-slate-500: #0a0a0a;
+  --color-zinc-100: #0a0a0a;
+  --color-zinc-200: #0a0a0a;
+  --color-zinc-300: #0a0a0a;
+  --color-zinc-400: #0a0a0a;
+  --color-zinc-500: #0a0a0a;
 
-:root {
-  --bg: #0d1511;
-  --glass-top: rgba(255, 240, 220, 0.15);
-  --glass-bot: rgba(255, 240, 220, 0.04);
-  --glass-edge: rgba(255, 255, 255, 0.2);
-  --accent: #ffa968;
+  /* Old accent hues (blue/indigo/cyan/status colours) -> black text */
+  --color-blue-100: #0a0a0a;
+  --color-blue-200: #0a0a0a;
+  --color-blue-300: #0a0a0a;
+  --color-blue-400: #0a0a0a;
+  --color-blue-500: #0a0a0a;
+  --color-blue-600: #0a0a0a;
+  --color-sky-300: #0a0a0a;
+  --color-sky-400: #0a0a0a;
+  --color-sky-500: #0a0a0a;
+  --color-cyan-400: #0a0a0a;
+  --color-cyan-500: #0a0a0a;
+  --color-indigo-400: #0a0a0a;
+  --color-indigo-500: #0a0a0a;
+  --color-indigo-600: #0a0a0a;
+  --color-green-400: #0a0a0a;
+  --color-green-500: #0a0a0a;
+  --color-emerald-400: #0a0a0a;
+  --color-yellow-400: #0a0a0a;
+  --color-purple-400: #0a0a0a;
 }
 
 body {
-  background-color: var(--bg);
-  color: #f3ece0;
+  background-color: var(--paper);
+  color: var(--ink);
   font-family: var(--font-sans);
 }
 
-/* Static colour field the glass sits on. Fixed + never repainted. */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  background:
-    radial-gradient(42vmax 42vmax at 8% 8%, rgba(226, 114, 74, 0.4), transparent 70%),
-    radial-gradient(40vmax 40vmax at 92% 22%, rgba(224, 180, 76, 0.24), transparent 70%),
-    radial-gradient(45vmax 45vmax at 20% 96%, rgba(96, 160, 128, 0.34), transparent 70%),
-    radial-gradient(35vmax 35vmax at 88% 92%, rgba(40, 110, 100, 0.3), transparent 70%);
+/* Text selection: accent fill, white text (matches every other "interactive" thing) */
+::selection {
+  background: var(--accent);
+  color: var(--on-accent);
 }
 
 h1,
@@ -68,47 +85,45 @@ h3,
 h4,
 .font-serif {
   font-family: var(--font-serif);
-  font-weight: 400 !important; /* Instrument Serif ships one weight */
-  letter-spacing: -0.01em;
+  font-weight: 800 !important;
+  letter-spacing: -0.025em;
+  line-height: 1.05;
 }
 
-/* Glass pane */
+/* Raised clay slab */
 .sk-panel {
-  background:
-    linear-gradient(135deg, var(--glass-top), var(--glass-bot) 55%, rgba(255, 255, 255, 0.1));
-  border: 1px solid var(--glass-edge);
-  border-radius: 1.5rem;
+  background: var(--paper);
+  border: 0;
+  border-radius: 1.75rem;
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.5),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.06),
-    inset 1px 0 0 rgba(255, 255, 255, 0.12),
-    0 12px 32px -12px rgba(0, 0, 0, 0.55);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+    inset 6px 6px 12px rgba(255, 255, 255, 1),
+    inset -6px -8px 14px rgba(0, 0, 0, 0.09),
+    10px 14px 26px -4px rgba(0, 0, 0, 0.2);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
 }
 
 a.sk-panel:hover,
 button.sk-panel:hover,
 .sk-lift:hover {
-  transform: translateY(-3px);
+  transform: translateY(-4px);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.6),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.08),
-    inset 1px 0 0 rgba(255, 255, 255, 0.16),
-    0 18px 36px -12px rgba(0, 0, 0, 0.6);
+    inset 6px 6px 12px rgba(255, 255, 255, 1),
+    inset -6px -8px 14px rgba(0, 0, 0, 0.09),
+    12px 20px 32px -4px rgba(0, 0, 0, 0.26);
 }
 
 a.sk-panel:active,
 button.sk-panel:active {
-  transform: translateY(0);
+  transform: translateY(1px);
+  box-shadow:
+    inset 4px 4px 10px rgba(0, 0, 0, 0.16),
+    inset -4px -4px 8px rgba(255, 255, 255, 1);
 }
 
-/* Header is the single real-blur element */
-nav .sk-panel {
-  backdrop-filter: blur(14px) saturate(140%);
-  -webkit-backdrop-filter: blur(14px) saturate(140%);
+nav {
+  isolation: isolate;
 }
 
-/* Stitches and screws belong to the old theme */
 .sk-stitch {
   position: relative;
 }
@@ -116,63 +131,154 @@ nav .sk-panel {
   display: none;
 }
 
-/* Recessed / frosted well */
+/* Pressed-in clay well */
 .sk-inset {
-  background: rgba(10, 16, 12, 0.45);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 1rem;
+  background: var(--paper);
+  border: 0;
+  border-radius: 1.1rem;
   box-shadow:
-    inset 0 2px 8px rgba(0, 0, 0, 0.35),
-    0 1px 0 rgba(255, 255, 255, 0.08);
+    inset 4px 5px 10px rgba(0, 0, 0, 0.22),
+    inset -4px -4px 9px rgba(255, 255, 255, 1),
+    0 1px 0 rgba(0, 0, 0, 0.05);
 }
 
-/* Tinted glass button */
+/* Accent button: solid accent fill, white text. The ONLY coloured surface. */
 .sk-brass {
-  background: linear-gradient(180deg, #ffd2a6, #f0905a);
-  color: #3a1a08;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
-  border: 1px solid rgba(255, 220, 190, 0.7);
+  background: var(--accent);
+  color: var(--on-accent);
+  border: 0;
   border-radius: 9999px;
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.75),
-    inset 0 -6px 12px rgba(190, 80, 30, 0.25),
-    0 8px 18px -8px rgba(226, 114, 74, 0.7);
-  transition: transform 0.12s ease, filter 0.12s ease;
+    inset 4px 4px 9px rgba(255, 255, 255, 0.35),
+    inset -5px -6px 11px rgba(0, 0, 0, 0.28),
+    6px 10px 18px -2px rgba(37, 99, 235, 0.45);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
 }
 .sk-brass:hover {
-  filter: brightness(1.12);
+  transform: translateY(-2px);
 }
 .sk-brass:active {
-  transform: scale(0.97);
-}
-
-/* Small glass tile */
-.sk-key {
-  background: linear-gradient(160deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.06));
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  border-radius: 0.9rem;
+  transform: translateY(1px);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.55),
-    0 6px 14px -6px rgba(0, 0, 0, 0.5);
+    inset 4px 5px 10px rgba(0, 0, 0, 0.35),
+    inset -3px -3px 7px rgba(255, 255, 255, 0.2);
 }
 
-.sk-emboss {
-  color: #fff8ee;
+/* Small puffy tile */
+.sk-key {
+  background: var(--paper);
+  border: 0;
+  border-radius: 1rem;
+  box-shadow:
+    inset 3px 3px 6px rgba(255, 255, 255, 1),
+    inset -3px -4px 8px rgba(0, 0, 0, 0.1),
+    4px 6px 12px -2px rgba(0, 0, 0, 0.22);
 }
+
+.sk-emboss,
 .sk-brass-text {
-  color: #ffb98a;
+  color: var(--ink);
 }
 
 .sk-groove {
-  height: 1px;
+  height: 2px;
   border: 0;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+  border-radius: 9999px;
+  background: var(--ink);
 }
 
-/* Skip painting offscreen sections until they're near the viewport */
-.sk-defer {
-  content-visibility: auto;
-  contain-intrinsic-size: auto 700px;
+/* Accent clay variant (hero monitor): same puffy lighting, accent body */
+.sk-panel.sk-clay-teal,
+.sk-key.sk-clay-teal {
+  background: var(--accent);
+  box-shadow:
+    inset 6px 6px 12px rgba(255, 255, 255, 0.3),
+    inset -6px -8px 14px rgba(0, 0, 0, 0.3),
+    10px 14px 26px -4px rgba(37, 99, 235, 0.4);
+}
+
+/* ---------- Blog article body ----------
+   Blog posts hard-code Tailwind classes written for a dark page. Instead of
+   editing every post, map those patterns to neutral clay here. */
+
+/* former dark blocks (code, terminals, callout cores) -> white pressed-in wells */
+.clay-article :is([class*="bg-slate-"], [class*="bg-zinc-"], [class*="bg-gray-"], [class*="bg-black"]) {
+  background: var(--paper) !important;
+  border: 0 !important;
+  border-radius: 1.1rem;
+  box-shadow:
+    inset 4px 5px 10px rgba(0, 0, 0, 0.22),
+    inset -4px -4px 9px rgba(255, 255, 255, 1);
+}
+/* neutral cards / chips / gradient-bordered callouts / bordered boxes -> white raised clay */
+.clay-article .bg-white,
+.clay-article [class*="bg-white/"],
+.clay-article [class*="bg-linear-to"],
+.clay-article [class*="bg-blue-500/"],
+.clay-article [class*="bg-amber-500/"],
+.clay-article [class*="bg-red-500/"],
+.clay-article [class*="border-white/"][class*="rounded"] {
+  background: var(--paper);
+  border: 0;
+  box-shadow:
+    inset 3px 3px 6px rgba(255, 255, 255, 1),
+    inset -3px -4px 8px rgba(0, 0, 0, 0.12),
+    4px 6px 12px -2px rgba(0, 0, 0, 0.25);
+}
+.clay-article [class*="border-blue-500/"],
+.clay-article [class*="border-amber-500/"],
+.clay-article [class*="border-red-500/"] {
+  border-color: transparent;
+}
+/* tiny decorative dots (e.g. window-chrome dots) */
+.clay-article .rounded-full[class*="bg-white/"] {
+  background: var(--ink);
+  box-shadow: none;
+}
+/* solid-blue "active" buttons/pills -> the accent button */
+.clay-article :is(.bg-blue-500, .bg-blue-600, .bg-blue-700) {
+  background: var(--accent);
+  color: var(--on-accent);
+  box-shadow:
+    inset 3px 3px 6px rgba(255, 255, 255, 0.35),
+    inset -3px -4px 8px rgba(0, 0, 0, 0.28),
+    4px 6px 12px -2px rgba(37, 99, 235, 0.4);
+}
+/* links inside articles -> blue pill with white text, like every other link */
+.clay-article a:not(.sk-brass):not(.sk-panel) {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  background: var(--accent);
+  color: var(--on-accent);
+  padding: 0.05em 0.55em;
+  border-radius: 0.6em;
+  text-decoration: none;
+  font-weight: 600;
+  box-shadow:
+    inset 2px 2px 4px rgba(255, 255, 255, 0.35),
+    inset -2px -3px 5px rgba(0, 0, 0, 0.25),
+    3px 4px 8px -2px rgba(37, 99, 235, 0.4);
+}
+/* every button inside an article -> accent button (active tab is underlined) */
+.clay-article button:not(.sk-brass) {
+  background: var(--accent);
+  color: var(--on-accent);
+  border-radius: 0.75rem;
+  box-shadow:
+    inset 2px 2px 4px rgba(255, 255, 255, 0.35),
+    inset -2px -3px 5px rgba(0, 0, 0, 0.25),
+    3px 4px 8px -2px rgba(37, 99, 235, 0.4);
+}
+.clay-article button.bg-blue-600 {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 2px;
+}
+/* thin rules / dividers inside articles */
+.clay-article hr,
+.clay-article [class*="border-white/"] {
+  border-color: rgba(0, 0, 0, 0.2);
 }
 
 @media (prefers-reduced-motion: reduce) {

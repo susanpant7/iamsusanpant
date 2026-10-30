@@ -54,7 +54,7 @@ export const SectionHeader = ({
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
-        className="inline-flex items-center gap-2 sk-brass px-3 py-1 !rounded-md font-mono tracking-[0.25em] text-[11px] font-bold uppercase mb-4 "
+        className="inline-flex items-center gap-2 sk-brass px-3 py-1 !rounded-md font-sans tracking-[0.1em] text-sm font-bold uppercase mb-4 "
       >
         <Icon size={14} /> {label}
       </motion.div>
@@ -64,12 +64,9 @@ export const SectionHeader = ({
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6, delay: 0.1 }}
-        className="text-5xl md:text-7xl font-bold sk-emboss tracking-tight"
+        className="text-4xl md:text-6xl font-bold sk-emboss tracking-tight"
       >
-        {title}{" "}
-        <span className="sk-brass-text italic">
-          {highlightedWord}
-        </span>
+        {title} {highlightedWord}
       </motion.h2>
     </div>
   );

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "@tanstack/react-router";
+import { motion } from "framer-motion";
 import { Menu, X, Code2, ArrowRight } from "lucide-react";
 import { NAV_LINKS } from "./NavLinks";
 
@@ -20,31 +21,39 @@ const Header = () => {
               <span className="block sk-emboss font-serif font-bold tracking-wider text-lg leading-tight">
                 Susan Pant
               </span>
-              <span className="text-[9px] sk-brass-text font-mono tracking-[0.3em] uppercase">
+              <span className="text-[13px] text-gray-400 font-sans font-semibold tracking-normal">
                 Full Stack Developer
               </span>
             </div>
           </Link>
 
-          {/* Desktop nav: recessed track, pressed-in active tab */}
-          <div className="hidden md:flex items-center gap-1 sk-inset p-1 z-50">
+          {/* Desktop nav: segmented switch, the blue knob slides to the active tab */}
+          <div className="hidden md:flex items-center sk-inset p-1 z-50">
             {NAV_LINKS.map(({ name, to, icon: Icon }) => (
               <Link
                 key={name}
                 to={to}
-                className="px-6 py-2 text-[11px] font-bold uppercase tracking-[0.2em] rounded-lg transition-colors"
-                activeProps={{
-                  className:
-                    "sk-key  text-[#ffc9a0]",
-                }}
-                inactiveProps={{
-                  className: "text-gray-400 hover:text-gray-200",
-                }}
+                className="relative px-6 py-2 text-xs font-bold uppercase tracking-[0.1em] rounded-xl"
               >
-                <span className="flex items-center gap-2">
-                  <Icon size={14} />
-                  {name}
-                </span>
+                {({ isActive }) => (
+                  <>
+                    {isActive && (
+                      <motion.span
+                        layoutId="nav-knob"
+                        transition={{ type: "spring", stiffness: 500, damping: 35 }}
+                        className="sk-brass absolute inset-0 !rounded-xl"
+                      />
+                    )}
+                    <span
+                      className={`relative z-10 flex items-center gap-2 transition-colors ${
+                        isActive ? "text-[var(--on-accent)]" : "text-black"
+                      }`}
+                    >
+                      <Icon size={14} />
+                      {name}
+                    </span>
+                  </>
+                )}
               </Link>
             ))}
           </div>
@@ -56,7 +65,7 @@ const Header = () => {
               className="sk-brass group px-5 py-2.5"
               activeProps={{ className: "brightness-110" }}
             >
-              <span className="text-[11px] font-black tracking-widest flex items-center gap-2">
+              <span className="text-xs font-black tracking-[0.08em] flex items-center gap-2">
                 LET’S TALK
                 <ArrowRight
                   size={14}
@@ -68,7 +77,7 @@ const Header = () => {
             <button
               onClick={() => setIsOpen(!isOpen)}
               aria-label="Toggle menu"
-              className="md:hidden sk-key p-2.5 text-[#ffc9a0] active:translate-y-0.5"
+              className="md:hidden sk-brass !rounded-xl p-2.5"
             >
               {isOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
@@ -84,8 +93,8 @@ const Header = () => {
               key={name}
               to={to}
               onClick={() => setIsOpen(false)}
-              className="flex items-center gap-4 text-2xl font-serif font-bold text-gray-400"
-              activeProps={{ className: "!text-[#ffc9a0]" }}
+              className="sk-brass flex items-center gap-4 px-6 py-3 text-xl font-serif"
+              activeProps={{ className: "underline underline-offset-4 decoration-2" }}
             >
               <Icon size={24} />
               {name}

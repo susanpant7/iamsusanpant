@@ -55,7 +55,7 @@ const ExperienceSection = () => {
   ];
 
   return (
-    <section className="w-full py-20 px-8 relative sk-defer">
+    <section className="w-full py-20 px-8 relative">
       <div className="max-w-7xl mx-auto">
         <SectionHeader
           icon={Briefcase}
@@ -123,7 +123,7 @@ const ExperienceSection = () => {
                   {exp.skills.map((skill) => (
                     <span
                       key={skill}
-                      className="px-3 py-1 sk-inset !rounded-md text-[10px] font-bold text-blue-400 uppercase tracking-widest"
+                      className="px-3 py-1 sk-inset !rounded-md text-xs font-bold text-blue-400 uppercase tracking-[0.08em]"
                     >
                       {skill}
                     </span>
