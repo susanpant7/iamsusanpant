@@ -64,7 +64,7 @@ export const SectionHeader = ({
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6, delay: 0.1 }}
-        className="text-4xl md:text-6xl font-bold sk-emboss tracking-tight"
+        className="text-5xl md:text-7xl font-bold sk-emboss tracking-tight"
       >
         {title}{" "}
         <span className="sk-brass-text italic">

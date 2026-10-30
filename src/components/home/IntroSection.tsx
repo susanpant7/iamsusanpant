@@ -32,7 +32,7 @@ const IntroSection = () => (
     {/* Monitor */}
     <div className="sk-panel relative w-full max-w-5xl p-3 md:p-5 !rounded-3xl">
       {/* Screen */}
-      <div className="sk-inset !rounded-xl overflow-hidden relative h-[560px] md:h-[600px] flex flex-col bg-[radial-gradient(ellipse_at_30%_20%,#3b5bdb,#1a1040_75%)]">
+      <div className="sk-inset !rounded-xl overflow-hidden relative h-[560px] md:h-[600px] flex flex-col bg-[radial-gradient(ellipse_at_30%_20%,#8a4a2c,#101a14_75%)]">
         {/* Menu bar */}
         <div className="flex items-center justify-between px-4 h-7 bg-black/50 text-[11px] text-gray-400 font-mono shrink-0">
           <span className="sk-brass-text font-bold">◆ susan.os</span>
@@ -42,7 +42,7 @@ const IntroSection = () => (
 
         {/* Desktop area with window */}
         <div className="flex-1 flex items-center justify-center p-3 md:p-8 min-h-0">
-          <div className="w-full max-w-3xl rounded-lg overflow-hidden border border-white/20 bg-[#0b1024]/70 shadow-[0_18px_30px_-10px_rgba(0,0,0,0.8)]">
+          <div className="w-full max-w-3xl rounded-lg overflow-hidden border border-white/20 bg-[#0a110d]/70 shadow-[0_18px_30px_-10px_rgba(0,0,0,0.8)]">
             {/* Title bar */}
             <div className="flex items-center gap-2 px-3 h-8 bg-linear-to-b from-white/25 to-white/10 border-b border-black">
               <span className="w-3 h-3 rounded-full bg-[#e0564b] shadow-[inset_0_-1px_1px_rgba(0,0,0,0.4)]" />
@@ -58,7 +58,7 @@ const IntroSection = () => (
               <p className="text-gray-500">
                 <span className="text-emerald-400">$</span> whoami
               </p>
-              <h1 className="font-mono text-3xl md:text-5xl font-bold sk-brass-text my-2">
+              <h1 className="font-serif text-5xl md:text-7xl sk-brass-text my-2">
                 Susan Pant
               </h1>
               <p className="text-gray-500 mb-4">
@@ -90,7 +90,7 @@ const IntroSection = () => (
               <div
                 key={label}
                 title={label}
-                className="sk-key w-9 h-9 md:w-11 md:h-11 flex items-center justify-center text-[#bfe3ff] !rounded-lg"
+                className="sk-key w-9 h-9 md:w-11 md:h-11 flex items-center justify-center text-[#ffc9a0] !rounded-lg"
               >
                 <Icon size={18} strokeWidth={1.75} />
               </div>

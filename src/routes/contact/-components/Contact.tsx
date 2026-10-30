@@ -122,7 +122,7 @@ const Contact = () => {
             className="sk-panel group p-8 flex items-start justify-between"
           >
             <div>
-              <div className="p-4 sk-key text-[#bfe3ff] mb-6 inline-block">
+              <div className="p-4 sk-key text-[#ffc9a0] mb-6 inline-block">
                 <Linkedin size={28} />
               </div>
               <h3 className="text-xl font-serif font-bold sk-emboss mb-2">LinkedIn</h3>
@@ -141,7 +141,7 @@ const Contact = () => {
             className="sk-panel group p-8 flex items-start justify-between"
           >
             <div>
-              <div className="p-4 sk-key text-[#bfe3ff] mb-6 inline-block">
+              <div className="p-4 sk-key text-[#ffc9a0] mb-6 inline-block">
                 <Github size={28} />
               </div>
               <h3 className="text-xl font-serif font-bold sk-emboss mb-2">GitHub</h3>
@@ -161,7 +161,7 @@ const Contact = () => {
             className="sk-panel group p-8 flex items-start justify-between"
           >
             <div>
-              <div className="p-4 sk-key text-[#bfe3ff] mb-6 inline-block">
+              <div className="p-4 sk-key text-[#ffc9a0] mb-6 inline-block">
                 <Facebook size={28} />
               </div>
               <h3 className="text-xl font-serif font-bold sk-emboss mb-2">Facebook</h3>
@@ -180,7 +180,7 @@ const Contact = () => {
             className="sk-panel group p-8 flex items-start justify-between"
           >
             <div>
-              <div className="p-4 sk-key text-[#bfe3ff] mb-6 inline-block">
+              <div className="p-4 sk-key text-[#ffc9a0] mb-6 inline-block">
                 <Instagram size={28} />
               </div>
               <h3 className="text-xl font-serif font-bold sk-emboss mb-2">Instagram</h3>

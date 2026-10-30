@@ -35,7 +35,7 @@ const Header = () => {
                 className="px-6 py-2 text-[11px] font-bold uppercase tracking-[0.2em] rounded-lg transition-colors"
                 activeProps={{
                   className:
-                    "sk-key  text-[#bfe3ff]",
+                    "sk-key  text-[#ffc9a0]",
                 }}
                 inactiveProps={{
                   className: "text-gray-400 hover:text-gray-200",
@@ -68,7 +68,7 @@ const Header = () => {
             <button
               onClick={() => setIsOpen(!isOpen)}
               aria-label="Toggle menu"
-              className="md:hidden sk-key p-2.5 text-[#bfe3ff] active:translate-y-0.5"
+              className="md:hidden sk-key p-2.5 text-[#ffc9a0] active:translate-y-0.5"
             >
               {isOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
@@ -85,7 +85,7 @@ const Header = () => {
               to={to}
               onClick={() => setIsOpen(false)}
               className="flex items-center gap-4 text-2xl font-serif font-bold text-gray-400"
-              activeProps={{ className: "!text-[#bfe3ff]" }}
+              activeProps={{ className: "!text-[#ffc9a0]" }}
             >
               <Icon size={24} />
               {name}

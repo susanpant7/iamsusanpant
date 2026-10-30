@@ -7,7 +7,7 @@ export const Route = createRootRoute({
 
 function RootComponent() {
   return (
-    <div className="min-h-screen selection:bg-amber-500/30 text-[#e8eefc] overflow-x-hidden">
+    <div className="min-h-screen selection:bg-amber-500/30 text-[#f3ece0] overflow-x-hidden">
       <Header />
       <Outlet />
       <footer className="py-4 text-center text-gray-500 text-xs sk-emboss">

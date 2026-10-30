@@ -61,7 +61,7 @@ function RouteComponent() {
 
           <div
             className="prose prose-invert max-w-none
-                   prose-headings:text-[#ffffff]
+                   prose-headings:text-[#fff8ee]
                    prose-headings:font-serif prose-headings:font-bold
                    prose-headings:tracking-tight
                    prose-p:text-gray-400

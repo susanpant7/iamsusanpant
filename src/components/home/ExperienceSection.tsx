@@ -56,7 +56,7 @@ const ExperienceSection = () => {
 
   return (
     <section className="w-full py-20 px-8 relative sk-defer">
-      <div className="">
+      <div className="max-w-7xl mx-auto">
         <SectionHeader
           icon={Briefcase}
           label="Professional History"
