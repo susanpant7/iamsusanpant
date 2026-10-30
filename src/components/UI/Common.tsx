@@ -1,14 +1,18 @@
-import { motion } from "framer-motion";
+import type { ReactNode } from "react";
 
-export const GlassCard = ({ children, className = "", hover = true }: any) => (
-  <motion.div
-    initial={{ opacity: 0, y: 20 }}
-    animate={{ opacity: 1, y: 0 }}
-    whileHover={
-      hover ? { y: -5, backgroundColor: "rgba(255,255,255,0.04)" } : {}
-    }
-    className={`p-8 rounded-[2.5rem] border border-white/10 bg-white/2 backdrop-blur-md transition-all shadow-2xl ${className}`}
+/** Raised, stitched leather card. Pure CSS: no JS animation, no blur. */
+export const GlassCard = ({
+  children,
+  className = "",
+  hover = true,
+}: {
+  children: ReactNode;
+  className?: string;
+  hover?: boolean;
+}) => (
+  <div
+    className={`sk-panel sk-stitch p-8 ${hover ? "sk-lift" : ""} ${className}`}
   >
     {children}
-  </motion.div>
+  </div>
 );

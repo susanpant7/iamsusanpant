@@ -1,6 +1,3 @@
-import { useRef, useEffect } from "react";
-import { motion, useTransform, useSpring, useMotionValue } from "framer-motion";
-import { Typewriter } from "react-simple-typewriter";
 import {
   Code2,
   Monitor,
@@ -12,255 +9,109 @@ import {
   Layout,
 } from "lucide-react";
 
-import developerBg from "../../assets/web-dev-1.png";
-
-/* ---------------------------------------------
-   Floating Icon Component
----------------------------------------------- */
-const FloatingIcon = ({
-  Icon,
-  top,
-  left,
-  delay,
-  color,
-  glow,
-}: {
-  Icon: any;
-  top: string;
-  left: string;
-  delay: number;
-  color: string;
-  glow: string;
-}) => (
-  <motion.div
-    initial={{ opacity: 0, scale: 0.6 }}
-    animate={{
-      opacity: [0.6, 1, 0.6],
-      y: [0, -28, 0],
-      rotate: [0, 8, -8, 0],
-      scale: [1, 1.1, 1],
-    }}
-    transition={{
-      duration: 6,
-      delay,
-      repeat: Infinity,
-      ease: "easeInOut",
-    }}
-    style={{ top, left, translateX: "-50%", translateY: "-50%" }}
-    className={`absolute hidden md:block z-20 ${color}`}
-  >
-    <Icon
-      size={44}
-      strokeWidth={1.5}
-      className="relative z-10 drop-shadow-[0_0_18px_currentColor]"
-    />
-    <div
-      className={`absolute inset-0 rounded-full blur-2xl opacity-25 animate-pulse ${glow}`}
-    />
-  </motion.div>
-);
-
-/* ---------------------------------------------
-   Floating Icons Config
----------------------------------------------- */
-const FLOATING_ICONS = [
-  {
-    Icon: Code2,
-    top: "22%",
-    left: "50%",
-    color: "text-blue-400",
-    glow: "bg-blue-500",
-    delay: 0,
-  },
-
-  {
-    Icon: Monitor,
-    top: "35%",
-    left: "12%",
-    color: "text-cyan-400",
-    glow: "bg-cyan-500",
-    delay: 0.4,
-  },
-  {
-    Icon: Server,
-    top: "55%",
-    left: "10%",
-    color: "text-emerald-400",
-    glow: "bg-emerald-500",
-    delay: 0.8,
-  },
-  {
-    Icon: Database,
-    top: "75%",
-    left: "14%",
-    color: "text-indigo-400",
-    glow: "bg-indigo-500",
-    delay: 1.2,
-  },
-
-  {
-    Icon: Webhook,
-    top: "35%",
-    left: "88%",
-    color: "text-yellow-400",
-    glow: "bg-yellow-500",
-    delay: 0.6,
-  },
-  {
-    Icon: Globe,
-    top: "55%",
-    left: "90%",
-    color: "text-sky-400",
-    glow: "bg-sky-500",
-    delay: 1.0,
-  },
-  {
-    Icon: Terminal,
-    top: "75%",
-    left: "86%",
-    color: "text-rose-400",
-    glow: "bg-rose-500",
-    delay: 1.4,
-  },
-
-  {
-    Icon: Layout,
-    top: "88%",
-    left: "50%",
-    color: "text-purple-400",
-    glow: "bg-purple-500",
-    delay: 0.9,
-  },
+const DOCK = [
+  { Icon: Code2, label: "Code" },
+  { Icon: Monitor, label: "UI" },
+  { Icon: Server, label: "API" },
+  { Icon: Database, label: "SQL" },
+  { Icon: Webhook, label: "Hooks" },
+  { Icon: Globe, label: "Web" },
+  { Icon: Terminal, label: "CLI" },
+  { Icon: Layout, label: "Layout" },
 ];
 
-/* ---------------------------------------------
-   Hero Section
----------------------------------------------- */
-const IntroSection = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
+const BIO_LINES = [
+  "An Experienced Full-Stack Developer crafting scalable, high-performance applications.",
+  "Expert in solving complex problems using clean architecture and modern stacks.",
+  "Experienced in leading teams, Agile delivery, and mentoring developers.",
+  "Building real-world applications powered by fine-tuned AI models and RAG (Retrieval-Augmented Generation).",
+];
 
-  /* Mouse Parallax */
-  const mouseX = useMotionValue(0.5);
-  const mouseY = useMotionValue(0.5);
-  const spring = { damping: 30, stiffness: 120 };
+const IntroSection = () => (
+  <section className="relative w-full min-h-screen flex flex-col items-center justify-center pt-28 pb-12 px-4">
+    {/* Monitor */}
+    <div className="sk-panel relative w-full max-w-5xl p-3 md:p-5 !rounded-3xl">
+      {/* Screen */}
+      <div className="sk-inset !rounded-xl overflow-hidden relative h-[560px] md:h-[600px] flex flex-col bg-[radial-gradient(ellipse_at_30%_20%,#3b5bdb,#1a1040_75%)]">
+        {/* Menu bar */}
+        <div className="flex items-center justify-between px-4 h-7 bg-black/50 text-[11px] text-gray-400 font-mono shrink-0">
+          <span className="sk-brass-text font-bold">◆ susan.os</span>
+          <span className="hidden sm:block">Finder&nbsp;&nbsp;File&nbsp;&nbsp;Edit&nbsp;&nbsp;View</span>
+          <span>Mon 9:41</span>
+        </div>
 
-  const textX = useSpring(useTransform(mouseX, [0, 1], [20, -20]), spring);
-  const textY = useSpring(useTransform(mouseY, [0, 1], [20, -20]), spring);
-  const bgX = useSpring(useTransform(mouseX, [0, 1], [-30, 30]), spring);
-  const bgY = useSpring(useTransform(mouseY, [0, 1], [-30, 30]), spring);
+        {/* Desktop area with window */}
+        <div className="flex-1 flex items-center justify-center p-3 md:p-8 min-h-0">
+          <div className="w-full max-w-3xl rounded-lg overflow-hidden border border-white/20 bg-[#0b1024]/70 shadow-[0_18px_30px_-10px_rgba(0,0,0,0.8)]">
+            {/* Title bar */}
+            <div className="flex items-center gap-2 px-3 h-8 bg-linear-to-b from-white/25 to-white/10 border-b border-black">
+              <span className="w-3 h-3 rounded-full bg-[#e0564b] shadow-[inset_0_-1px_1px_rgba(0,0,0,0.4)]" />
+              <span className="w-3 h-3 rounded-full bg-[#e2b043] shadow-[inset_0_-1px_1px_rgba(0,0,0,0.4)]" />
+              <span className="w-3 h-3 rounded-full bg-[#5fb663] shadow-[inset_0_-1px_1px_rgba(0,0,0,0.4)]" />
+              <span className="flex-1 text-center text-[11px] text-gray-400 font-mono pr-10">
+                susan — zsh — 80×24
+              </span>
+            </div>
 
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (!containerRef.current) return;
-      const rect = containerRef.current.getBoundingClientRect();
-      mouseX.set((e.clientX - rect.left) / rect.width);
-      mouseY.set((e.clientY - rect.top) / rect.height);
-    };
+            {/* Terminal body */}
+            <div className="p-4 md:p-6 font-mono text-left text-sm md:text-base leading-relaxed">
+              <p className="text-gray-500">
+                <span className="text-emerald-400">$</span> whoami
+              </p>
+              <h1 className="font-mono text-3xl md:text-5xl font-bold sk-brass-text my-2">
+                Susan Pant
+              </h1>
+              <p className="text-gray-500 mb-4">
+                <span className="text-emerald-400">$</span> cat role.txt
+              </p>
+              <p className="text-gray-200 font-bold mb-4">Full Stack Developer</p>
+              <p className="text-gray-500 mb-2">
+                <span className="text-emerald-400">$</span> cat about.md
+              </p>
+              <div className="space-y-2 text-gray-300 text-[13px] md:text-sm">
+                {BIO_LINES.map((line) => (
+                  <p key={line}>
+                    <span className="text-blue-500">›</span> {line}
+                  </p>
+                ))}
+              </div>
+              <p className="mt-4 text-gray-500">
+                <span className="text-emerald-400">$</span>{" "}
+                <span className="inline-block w-2 h-4 align-middle bg-blue-400" />
+              </p>
+            </div>
+          </div>
+        </div>
 
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, [mouseX, mouseY]);
-
-  const bioLines = [
-    "An Experienced Full-Stack Developer crafting scalable, high-performance applications.",
-    "Expert in solving complex problems using clean architecture and modern stacks.",
-    "Experienced in leading teams, Agile delivery, and mentoring developers.",
-  ];
-
-  return (
-    <section
-      ref={containerRef}
-      className="relative w-full h-screen overflow-hidden flex items-center justify-center bg-[#020617] pt-20"
-    >
-      {/* Background Image */}
-      <motion.div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: `url(${developerBg})`,
-          x: bgX,
-          y: bgY,
-          scale: 1.1,
-        }}
-      >
-        {/* Dark cinematic overlay */}
-        <div className="absolute inset-0 bg-black/80" />
-
-        {/* Bottom blend into dark blue */}
-        <div
-          className="absolute inset-x-0 bottom-0 h-56"
-          style={{
-            background:
-              "linear-gradient(to bottom, rgba(2,6,23,0) 0%, rgba(2,6,23,1) 100%)",
-          }}
-        />
-      </motion.div>
-
-      {/* Floating Icons */}
-      <div className="absolute inset-0 z-10 pointer-events-none">
-        {FLOATING_ICONS.map((icon, i) => (
-          <FloatingIcon key={i} {...icon} />
-        ))}
+        {/* Dock */}
+        <div className="shrink-0 flex justify-center pb-3">
+          <div className="flex gap-2 px-3 py-2 rounded-2xl bg-black/40 border border-white/10">
+            {DOCK.map(({ Icon, label }) => (
+              <div
+                key={label}
+                title={label}
+                className="sk-key w-9 h-9 md:w-11 md:h-11 flex items-center justify-center text-[#bfe3ff] !rounded-lg"
+              >
+                <Icon size={18} strokeWidth={1.75} />
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
 
-      {/* Content */}
-      <motion.div
-        style={{ x: textX, y: textY }}
-        className="relative z-30 max-w-5xl px-6 text-center"
-      >
-        <motion.h2
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.85 }}
-          className="text-blue-400 font-mono tracking-[0.35em] text-sm md:text-xl mb-4 uppercase"
-        >
-          Hi, I am
-        </motion.h2>
+      {/* Bezel details */}
+      <div className="flex items-center justify-center gap-3 pt-3">
+        <span className="sk-brass-text font-serif text-xs tracking-[0.3em] uppercase">
+          Susan
+        </span>
+        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_4px_#34d399]" />
+      </div>
+    </div>
 
-        <h1 className="text-5xl md:text-8xl font-black tracking-tighter mb-10 text-white">
-          <span className="bg-linear-to-r from-blue-400 via-cyan-300 to-indigo-500 bg-clip-text text-transparent">
-            <Typewriter
-              words={["Susan Pant", "Full Stack Developer"]}
-              loop={0}
-              cursor
-              cursorStyle="_"
-              typeSpeed={80}
-              deleteSpeed={50}
-              delaySpeed={2000}
-            />
-          </span>
-        </h1>
-
-        {/* Bio */}
-        <motion.div
-          initial="hidden"
-          animate="show"
-          variants={{ show: { transition: { staggerChildren: 0.15 } } }}
-          className="space-y-4 max-w-4xl mx-auto"
-        >
-          {bioLines.map((line, i) => (
-            <motion.p
-              key={i}
-              variants={{
-                hidden: { opacity: 0, y: 20, filter: "blur(6px)" },
-                show: { opacity: 1, y: 0, filter: "blur(0px)" },
-              }}
-              className="text-gray-300 text-lg md:text-2xl font-light leading-relaxed"
-            >
-              {line}
-            </motion.p>
-          ))}
-        </motion.div>
-      </motion.div>
-
-      {/* Scroll Indicator */}
-      <motion.div
-        animate={{ y: [0, 12, 0] }}
-        transition={{ repeat: Infinity, duration: 2 }}
-        className="absolute bottom-8 text-gray-400 text-xs tracking-[0.3em]"
-      >
-        SCROLL
-      </motion.div>
-    </section>
-  );
-};
+    {/* Stand */}
+    <div className="sk-key w-24 h-8 !rounded-none -mt-px" />
+    <div className="sk-panel w-56 h-3 !rounded-full" />
+  </section>
+);
 
 export default IntroSection;

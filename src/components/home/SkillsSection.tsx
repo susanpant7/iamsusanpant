@@ -1,59 +1,62 @@
-import { motion } from "framer-motion";
-import { Users, Workflow, Layers, MessageSquare, Terminal } from "lucide-react";
+import {
+  Users,
+  Workflow,
+  Layers,
+  MessageSquare,
+  Terminal,
+  Sparkles,
+  DatabaseZap,
+} from "lucide-react";
 import SectionHeader from "../UI/SectionHeader";
 import { LOGOS } from "../../lib/Logos";
 
 const SkillBadge = ({ icon, name }: { icon: string; name: string }) => (
-  <motion.div
-    whileHover={{ scale: 1.05, backgroundColor: "rgba(255,255,255,0.05)" }}
-    className="flex flex-col items-center justify-center p-6 rounded-2xl border border-white/5 bg-white/2 transition-all group"
-  >
+  <div className="sk-panel sk-lift flex flex-col items-center justify-center p-6 group">
     <img
       src={icon}
       alt={name}
-      className="w-10 h-10 mb-4 object-contain group-hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.3)] transition-all"
+      loading="lazy"
+      className="w-10 h-10 mb-4 object-contain"
     />
     <span className="text-gray-400 text-[10px] font-bold uppercase tracking-widest text-center">
       {name}
     </span>
-  </motion.div>
+  </div>
 );
 
 const StrategyCard = ({ title, description, icon, tags, logo }: any) => (
-  <motion.div
-    whileHover={{ y: -5 }}
-    className="group relative p-8 rounded-3xl border border-white/10 bg-linear-to-br from-white/3 to-transparent overflow-hidden hover:border-blue-500/30 transition-all"
-  >
+  <div className="sk-panel sk-stitch sk-lift group relative p-8">
     <div className="flex justify-between items-start mb-6">
-      <div className="p-3 bg-black/40 rounded-2xl border border-white/5 text-blue-400">
+      <div className="sk-inset p-3 text-blue-400">
         {icon}
       </div>
       {logo && (
         <img
           src={logo}
-          className="w-8 h-8 opacity-40 grayscale group-hover:grayscale-0 transition-all"
+          loading="lazy"
+          className="w-8 h-8 opacity-60"
           alt="logo"
         />
       )}
     </div>
-    <h4 className="text-xl font-bold text-white mb-3">{title}</h4>
+    <h4 className="text-xl font-serif font-bold sk-emboss mb-3">{title}</h4>
     <p className="text-gray-400 text-sm leading-relaxed mb-6">{description}</p>
     <div className="flex flex-wrap gap-2">
       {tags.map((tag: string) => (
         <span
           key={tag}
-          className="px-3 py-1 bg-blue-500/5 rounded-full text-[10px] font-bold uppercase tracking-widest text-blue-400 border border-blue-400/10"
+          className="sk-inset !rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-blue-400"
         >
           {tag}
         </span>
       ))}
     </div>
-  </motion.div>
+  </div>
 );
 
 const SkillsSection = () => {
   return (
-    <section className="py-20 px-8">
+    <section className="py-20 px-8 sk-defer">
       <div className="max-w-7xl mx-auto">
         <SectionHeader
           icon={Terminal}
@@ -87,7 +90,7 @@ const SkillsSection = () => {
 
         {/* Development Environment */}
         <div className="mb-20">
-          <h4 className="text-gray-500 font-mono mb-8 uppercase tracking-widest text-xs">
+          <h4 className="sk-brass-text font-mono mb-8 uppercase tracking-widest text-xs">
             IDEs & Cloud
           </h4>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
@@ -125,6 +128,18 @@ const SkillsSection = () => {
             description="Requirement gathering and collaborating across cross-functional teams."
             icon={<MessageSquare size={32} />}
             tags={["Communication", "Requirements"]}
+          />
+          <StrategyCard
+            title="Fine-Tuning AI Models"
+            description="Fine-tuning language models on domain data and shipping them inside real-world applications."
+            icon={<Sparkles size={32} />}
+            tags={["Fine-Tuning", "LLMs"]}
+          />
+          <StrategyCard
+            title="RAG Applications"
+            description="Building retrieval-augmented generation systems that ground AI answers in your own data."
+            icon={<DatabaseZap size={32} />}
+            tags={["RAG", "Embeddings", "Vector Search"]}
           />
         </div>
       </div>

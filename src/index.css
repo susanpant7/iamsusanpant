@@ -1,12 +1,158 @@
 @import "tailwindcss";
-/* @custom-variant dark (&:where(.dark, .dark *)); */
 
+/*
+  Liquid-glass theme. Glass is faked with translucent gradients, a bright
+  specular top edge and soft shadows over one static, fixed background.
+  Only the fixed header uses a real backdrop blur (one small layer);
+  nothing loops or animates continuously.
+  (Class names keep the old "sk-" prefix so components stay untouched.)
+*/
 
-@keyframes custom-shimmer {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
+@theme {
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "SF Pro Display", "Segoe UI", sans-serif;
+  --font-serif: ui-sans-serif, system-ui, -apple-system, "SF Pro Display", "Segoe UI", sans-serif;
 }
 
-.animate-shimmer {
-  animation: custom-shimmer 2.5s infinite;
+:root {
+  --bg: #070b1a;
+  --glass-top: rgba(255, 255, 255, 0.16);
+  --glass-bot: rgba(255, 255, 255, 0.05);
+  --glass-edge: rgba(255, 255, 255, 0.2);
+  --accent: #7cc4ff;
+}
+
+body {
+  background-color: var(--bg);
+  color: #e8eefc;
+  font-family: var(--font-sans);
+}
+
+/* Static colour field the glass sits on. Fixed + never repainted. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(40vmax 40vmax at 12% 10%, rgba(59, 130, 246, 0.45), transparent 70%),
+    radial-gradient(45vmax 45vmax at 90% 25%, rgba(168, 85, 247, 0.38), transparent 70%),
+    radial-gradient(40vmax 40vmax at 30% 95%, rgba(20, 184, 166, 0.32), transparent 70%),
+    radial-gradient(35vmax 35vmax at 85% 90%, rgba(236, 72, 153, 0.22), transparent 70%);
+}
+
+h1,
+h2,
+h3 {
+  letter-spacing: -0.02em;
+}
+
+/* Glass pane */
+.sk-panel {
+  background:
+    linear-gradient(135deg, var(--glass-top), var(--glass-bot) 55%, rgba(255, 255, 255, 0.1));
+  border: 1px solid var(--glass-edge);
+  border-radius: 1.5rem;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.06),
+    inset 1px 0 0 rgba(255, 255, 255, 0.12),
+    0 12px 32px -12px rgba(0, 0, 0, 0.55);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+a.sk-panel:hover,
+button.sk-panel:hover,
+.sk-lift:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.6),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.08),
+    inset 1px 0 0 rgba(255, 255, 255, 0.16),
+    0 18px 36px -12px rgba(0, 0, 0, 0.6);
+}
+
+a.sk-panel:active,
+button.sk-panel:active {
+  transform: translateY(0);
+}
+
+/* Header is the single real-blur element */
+nav .sk-panel {
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+}
+
+/* Stitches and screws belong to the old theme */
+.sk-stitch {
+  position: relative;
+}
+.sk-screw {
+  display: none;
+}
+
+/* Recessed / frosted well */
+.sk-inset {
+  background: rgba(8, 12, 30, 0.42);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  box-shadow:
+    inset 0 2px 8px rgba(0, 0, 0, 0.35),
+    0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+/* Tinted glass button */
+.sk-brass {
+  background: linear-gradient(180deg, rgba(160, 210, 255, 0.55), rgba(70, 130, 255, 0.4));
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0, 20, 60, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 9999px;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.7),
+    inset 0 -6px 12px rgba(40, 90, 220, 0.3),
+    0 8px 18px -8px rgba(40, 90, 220, 0.7);
+  transition: transform 0.12s ease, filter 0.12s ease;
+}
+.sk-brass:hover {
+  filter: brightness(1.12);
+}
+.sk-brass:active {
+  transform: scale(0.97);
+}
+
+/* Small glass tile */
+.sk-key {
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.06));
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 0.9rem;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.55),
+    0 6px 14px -6px rgba(0, 0, 0, 0.5);
+}
+
+.sk-emboss {
+  color: #fff;
+}
+.sk-brass-text {
+  color: #9fd4ff;
+}
+
+.sk-groove {
+  height: 1px;
+  border: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+}
+
+/* Skip painting offscreen sections until they're near the viewport */
+.sk-defer {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 700px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
 }

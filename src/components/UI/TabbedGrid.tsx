@@ -40,7 +40,7 @@ export const TabbedGrid = ({ tabs }: TabbedGridProps) => {
   return (
     <div className="w-full text-white font-sans bg-transparent">
       {/* 1. NAV BAR: No extra margins */}
-      <nav className="sticky top-0 mb-4 z-50 bg-slate-900/90 backdrop-blur-md border-b border-white/10">
+      <nav className="sticky top-0 mb-4 z-50 sk-panel !rounded-none">
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           className="w-full flex items-center justify-between p-4 transition-all"
@@ -56,7 +56,7 @@ export const TabbedGrid = ({ tabs }: TabbedGridProps) => {
 
         {/* 2. DROPDOWN LIST: Positioned absolutely right under nav */}
         {isMenuOpen && (
-          <div className="absolute left-0 right-0 bg-slate-900 border-b border-white/10 shadow-2xl">
+          <div className="absolute left-0 right-0 sk-inset !rounded-none">
             {tabs.map((tab, index) => (
               <button
                 key={tab.id}
@@ -66,7 +66,7 @@ export const TabbedGrid = ({ tabs }: TabbedGridProps) => {
                 }}
                 className={`w-full text-left px-4 py-3 text-sm transition-colors border-l-4 ${
                   activeIdx === index
-                    ? "bg-blue-600/20 border-blue-500 text-blue-400"
+                    ? "bg-white/5 border-blue-500 text-blue-400"
                     : "border-transparent text-slate-400 hover:bg-white/5"
                 }`}
               >
@@ -83,7 +83,7 @@ export const TabbedGrid = ({ tabs }: TabbedGridProps) => {
         <div className="w-full">{tabs[activeIdx].content}</div>
 
         {/* Bottom Navigation: Tightly coupled to content */}
-        <div className="flex mt-4 border-t border-white/10 bg-white/5">
+        <div className="flex mt-4 sk-panel !rounded-none overflow-hidden">
           <button
             onClick={prevTab}
             className={`flex-1 flex items-center justify-center gap-2 py-5 font-bold transition-all ${
@@ -99,7 +99,7 @@ export const TabbedGrid = ({ tabs }: TabbedGridProps) => {
             onClick={nextTab}
             className={`flex-1 flex items-center justify-center gap-2 py-5 font-bold transition-all ${
               activeIdx === tabs.length - 1
-                ? "bg-blue-600 text-white"
+                ? "sk-brass !rounded-none"
                 : "text-slate-200 hover:bg-white/5"
             }`}
           >

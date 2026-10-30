@@ -30,13 +30,14 @@ const BlogContainer = () => {
               params={{ blogId: blog.id }}
               className="group block h-full"
             >
-              <GlassCard className="h-full flex flex-col items-start p-8 group-hover:border-blue-500/40 transition-all">
+              <GlassCard className="h-full flex flex-col items-start p-8">
                 <div className="w-full flex justify-between items-start mb-8">
-                  <div className="w-16 h-16 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/20 flex items-center justify-center group-hover:scale-110 group-hover:bg-blue-600/20 group-hover:border-blue-500/50 transition-all duration-300 shadow-xl">
+                  <div className="sk-key w-16 h-16 flex items-center justify-center">
                     <img
+                      loading="lazy"
                       src={blog.logo}
                       alt={blog.title}
-                      className="w-9 h-9 object-contain transition-all duration-300 opacity-90 group-hover:opacity-100 contrast-125"
+                      className="w-9 h-9 object-contain "
                     />
                   </div>
 
@@ -45,16 +46,16 @@ const BlogContainer = () => {
                   </span>
                 </div>
 
-                <h3 className="text-2xl font-black text-white group-hover:text-blue-400 transition-colors mb-3 tracking-tight">
+                <h3 className="text-2xl font-serif font-bold sk-emboss mb-3 tracking-tight">
                   {blog.title}
                 </h3>
 
-                <p className="text-gray-400 text-sm leading-relaxed mb-8 font-light">
+                <p className="text-gray-400 text-sm leading-relaxed mb-8">
                   {blog.subtitle}
                 </p>
 
-                <div className="mt-auto w-full flex items-center justify-between pt-4 border-t border-white/5">
-                  <div className="flex items-center gap-2 text-blue-500 font-bold text-[10px] uppercase tracking-widest group-hover:gap-4 transition-all">
+                <div className="mt-auto w-full flex items-center justify-between pt-4 border-t border-black/50 shadow-[0_-1px_0_rgba(255,232,190,0.07)]">
+                  <div className="flex items-center gap-2 sk-brass-text font-bold text-[10px] uppercase tracking-widest group-hover:gap-4 transition-all">
                     Start Learning <ArrowRight size={14} />
                   </div>
                 </div>

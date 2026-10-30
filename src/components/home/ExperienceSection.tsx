@@ -55,8 +55,7 @@ const ExperienceSection = () => {
   ];
 
   return (
-    <section className="min-h-screen w-full py-20 px-8 bg-transparent relative overflow-hidden">
-      <div className="absolute top-1/2 left-0 w-96 h-96 bg-blue-600/5 blur-[120px] rounded-full -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
+    <section className="w-full py-20 px-8 relative sk-defer">
       <div className="">
         <SectionHeader
           icon={Briefcase}
@@ -65,7 +64,7 @@ const ExperienceSection = () => {
           highlightedWord="Journey."
         />
 
-        <div className="relative border-l border-white/10 ml-4 md:ml-12 space-y-24">
+        <div className="relative border-l-2 border-black/60 ml-4 md:ml-12 space-y-24">
           {experiences.map((exp, index) => (
             <motion.div
               key={index}
@@ -76,7 +75,7 @@ const ExperienceSection = () => {
               className="relative pl-12 md:pl-20"
             >
               {/* Timeline Indicator */}
-              <div className="absolute -left-5.25 top-0 h-10 w-10 bg-black border border-white/20 rounded-xl flex items-center justify-center z-10 shadow-[0_0_15px_rgba(0,0,0,1)]">
+              <div className="absolute -left-5.25 top-0 sk-key h-10 w-10 flex items-center justify-center z-10">
                 {exp.icon}
               </div>
 
@@ -84,14 +83,14 @@ const ExperienceSection = () => {
                 {/* Header Info */}
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
                   <div>
-                    <h3 className="text-3xl font-bold text-white group-hover:text-blue-400 transition-colors">
+                    <h3 className="text-3xl font-serif font-bold sk-emboss">
                       {exp.company}
                     </h3>
                     <p className="text-blue-500 font-mono text-sm tracking-wider uppercase mt-1">
                       {exp.role}
                     </p>
                   </div>
-                  <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 rounded-full text-gray-400 text-xs font-bold font-mono">
+                  <div className="inline-flex items-center gap-2 px-4 py-2 sk-inset !rounded-full text-gray-400 text-xs font-bold font-mono">
                     <Calendar size={14} /> {exp.period}
                   </div>
                 </div>
@@ -104,10 +103,9 @@ const ExperienceSection = () => {
                 {/* Expanded Bullet Points */}
                 <div className="grid grid-cols-1 gap-4 mb-10">
                   {exp.highlights.map((item, i) => (
-                    <motion.div
+                    <div
                       key={i}
-                      whileHover={{ x: 5 }}
-                      className="flex items-start gap-4 p-5 bg-white/2 border border-white/5 rounded-2xl hover:bg-white/4 transition-all"
+                      className="sk-panel flex items-start gap-4 p-5 !rounded-xl"
                     >
                       <ChevronRight
                         size={18}
@@ -116,7 +114,7 @@ const ExperienceSection = () => {
                       <span className="text-gray-300 text-[15px] leading-relaxed font-medium">
                         {item}
                       </span>
-                    </motion.div>
+                    </div>
                   ))}
                 </div>
 
@@ -125,15 +123,13 @@ const ExperienceSection = () => {
                   {exp.skills.map((skill) => (
                     <span
                       key={skill}
-                      className="px-3 py-1 bg-blue-500/5 border border-blue-500/20 rounded-md text-[10px] font-bold text-blue-400 uppercase tracking-widest"
+                      className="px-3 py-1 sk-inset !rounded-md text-[10px] font-bold text-blue-400 uppercase tracking-widest"
                     >
                       {skill}
                     </span>
                   ))}
                 </div>
 
-                {/* Section Connector line shadow */}
-                <div className="absolute -bottom-12 left-0 w-full h-px bg-linear-to-r from-transparent via-white/5 to-transparent" />
               </div>
             </motion.div>
           ))}

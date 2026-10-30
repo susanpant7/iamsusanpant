@@ -11,7 +11,7 @@ export const GetMyDomain = () => (
       <div className="max-w-4xl mx-auto pb-20 px-6">
         {/* Big "Free" Notice */}
         <div className="relative overflow-hidden rounded-3xl p-1 mb-12 bg-linear-to-r from-blue-500 to-cyan-400">
-          <div className="bg-slate-900/90 backdrop-blur-xl rounded-[22px] p-8 text-center">
+          <div className="bg-slate-900/90 rounded-[22px] p-8 text-center">
             <h2 className="text-3xl font-black text-white mb-2 underline decoration-blue-500 underline-offset-8">
               It Costs 0 Rupees
             </h2>

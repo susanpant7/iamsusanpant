@@ -18,13 +18,13 @@ function RouteComponent() {
     return (
       <Section className="flex items-center justify-center min-h-[60vh]">
         <div className="text-center">
-          <h1 className="text-white text-4xl font-black mb-4">404</h1>
+          <h1 className="sk-emboss text-4xl font-serif font-bold mb-4">404</h1>
           <p className="text-gray-500 mb-8 font-mono uppercase tracking-widest">
             Module Not Found
           </p>
           <Link
             to="/courses"
-            className="px-8 py-3 bg-blue-600 text-white rounded-full font-bold hover:bg-blue-500 transition-all"
+            className="sk-brass px-8 py-3 font-bold"
           >
             Return to Curriculum
           </Link>
@@ -40,7 +40,7 @@ function RouteComponent() {
       <div className="w-full mb-10">
         <Link
           to="/blogs"
-          className="inline-flex items-center gap-2 text-blue-400 font-semibold hover:text-white transition-all group font-mono text-sm tracking-wide uppercase px-3 py-1 rounded-lg bg-blue-500/10 hover:bg-blue-500/20"
+          className="inline-flex items-center gap-2 sk-brass group font-mono text-sm font-bold tracking-wide uppercase px-4 py-2"
         >
           <ArrowLeft
             size={16}
@@ -53,9 +53,6 @@ function RouteComponent() {
       {/* Main Content */}
       <div className="w-full">
         <div className="relative">
-          {/* Side Accent */}
-          <div className="absolute -left-6 top-0 bottom-0 w-px bg-linear-to-b from-blue-500/30 to-transparent hidden md:block" />
-
           <BeautifulTitle
             label={blog.label}
             title={blog.title}
@@ -64,10 +61,9 @@ function RouteComponent() {
 
           <div
             className="prose prose-invert max-w-none
-                   prose-headings:text-white
-                   prose-headings:font-black
-                   prose-headings:tracking-tighter
-                   prose-headings:uppercase
+                   prose-headings:text-[#ffffff]
+                   prose-headings:font-serif prose-headings:font-bold
+                   prose-headings:tracking-tight
                    prose-p:text-gray-400
                    prose-p:leading-relaxed
                    prose-strong:text-blue-400"
@@ -76,7 +72,7 @@ function RouteComponent() {
           </div>
         </div>
 
-        <div className="mt-6 border-t border-white/10 flex justify-center bg-slate-900/40 backdrop-blur-sm py-5">
+        <div className="mt-6 sk-panel flex justify-center py-5">
           <Link
             to="/blogs"
             className="group inline-flex items-center gap-3 text-slate-300 hover:text-white transition-all duration-300 font-mono text-sm uppercase tracking-[0.35em]"
